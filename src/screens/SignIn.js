@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import React from "react";
 import {
   Image,
@@ -11,6 +12,16 @@ import {
 import Icon from "react-native-vector-icons/Feather";
 
 export default function Login() {
+  const { handleChange, handleSubmit, values } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
@@ -25,14 +36,33 @@ export default function Login() {
 
         <View style={styles.inputsArea}>
           <View style={styles.inputContainer}>
-            <TextInput style={styles.input} placeholder="You email" />
+            <TextInput
+              style={styles.input}
+              value={values.email}
+              onChangeText={handleChange("email")}
+              placeholder="You email"
+              autoCapitalize="none"
+            />
             <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
           </View>
           <View style={styles.inputContainer}>
-            <TextInput style={styles.input} placeholder="Password" />
+            <TextInput
+              style={styles.input}
+              value={values.password}
+              secureTextEntry={true}
+              autoCapitalize="none"
+              onChangeText={handleChange("password")}
+              placeholder="Password"
+            />
             <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
           </View>
-          <TouchableOpacity title="sign in" style={styles.button}>
+          <TouchableOpacity
+            title="sign in"
+            style={styles.button}
+            onPress={() => {
+              handleSubmit();
+            }}
+          >
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableOpacity>
         </View>
