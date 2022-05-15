@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/Feather";
 
 export default function Login() {
   return (
@@ -26,12 +26,7 @@ export default function Login() {
         <View style={styles.inputsArea}>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder="You email" />
-            <Icon
-              name="envelope"
-              size={20}
-              color="#9098b2"
-              style={styles.icon}
-            />
+            <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
           </View>
           <View style={styles.inputContainer}>
             <TextInput style={styles.input} placeholder="Password" />
@@ -153,6 +148,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7941D",
     borderRadius: 5,
     padding: "4%",
+    shadowColor: "rgba(0, 0, 0, 0.1)",
+    shadowOpacity: 0.8,
+    elevation: 6,
+    shadowRadius: 15,
+    shadowOffset: { width: 1, height: 13 },
   },
   buttonText: {
     color: "#fff",
