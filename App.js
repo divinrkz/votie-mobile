@@ -22,9 +22,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import { AuthStack, BookmarkStack, DashboardStack, NotificationStack, SearchStack, ShoppingCartStack } from "./src/stacks";
 
 const Stack = createStackNavigator();
-
-
-
 const Tab = createBottomTabNavigator();
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -32,6 +29,12 @@ export default function App() {
     Roboto_700Bold,
     Roboto_400Regular_Italic,
   });
+
+  // useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
 
   if (!fontsLoaded) {
     return <SplashScreen />;
@@ -121,12 +124,3 @@ export default function App() {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
