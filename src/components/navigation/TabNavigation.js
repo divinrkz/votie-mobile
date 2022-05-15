@@ -1,8 +1,9 @@
 
 import React from "react";
+import {View} from 'react-native'
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-
+import {SearchScreenStack} from '../../stacks';
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
@@ -25,7 +26,7 @@ return (
     >
       <Tab.Screen
         name="Dashboard"
-        component={<View>Dashboard</View>}
+        children={() => <SearchScreenStack/>}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
@@ -35,7 +36,7 @@ return (
 
        <Tab.Screen
         name="Notification"
-        component={<View>Dashboard</View>}
+        children={() => <SearchScreenStack/>}
         // options={{
         //   tabBarIcon: ({ color, size}) => (
         //     <MaterialIcons name="notifications" size={size} color={color} />
@@ -45,7 +46,7 @@ return (
 
       <Tab.Screen
         name="Camera"
-        component={<View>Dashboard</View>}
+        children={() => <SearchScreenStack/>}
         // options={({route}) => ({
         //   tabBarVisible: getTabBarVisibility(route),
         //   tabBarIcon: ({ color, size}) => (
@@ -56,7 +57,7 @@ return (
 
       <Tab.Screen
         name="Chat"
-        component={<View>Dashboard</View>}
+        children={() => <SearchScreenStack/>}
         // options={{
         //   tabBarIcon: ({ color, size }) => (
         //     <MaterialCommunityIcons name="message" color={color} size={size} />
@@ -66,7 +67,7 @@ return (
       
       <Tab.Screen
         name="profile"
-        component={<View>Dashboard</View>}
+        children={() => <SearchScreenStack/>}
         // options={{
         //   tabBarIcon: ({ color, size }) => (
         //     <FontAwesome5 name="user-alt" size={size} color={color} />
