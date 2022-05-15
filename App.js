@@ -1,15 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import Login from "./src/screens/Login";
-import MenuSelector from "./src/screens/MenuSelector";
+import ChooseKigali from "./src/screens/ChooseKigali";
 import SplashScreen from "./src/screens/Splash";
 
 export default function App() {
   return (
     <View style={styles.container}>
       {/* <Login /> */}
-      {/* <MenuSelector></MenuSelector> */}
-      <SplashScreen />
+      <ChooseKigali></ChooseKigali>
+      {/* <SplashScreen /> */}
       <StatusBar style="auto" />
     </View>
   );
