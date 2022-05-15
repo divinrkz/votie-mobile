@@ -5,10 +5,9 @@ import {
   useFonts,
 } from "@expo-google-fonts/roboto";
 import AppLoading from "expo-app-loading";
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-// import SignUp from "./src/screens/SignUp";
-import SignIn from "./src/screens/SignIn";
+import SignUp from "./src/screens/SignUp";
+// import SignIn from "./src/screens/SignIn";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,9 +21,13 @@ export default function App() {
   } else {
     return (
       <View style={styles.container}>
-        <SignIn />
+        {/* <SignIn /> */}
+        <SignUp />
+        {/* <StatusBar style="auto" /> */}
+        {/* <SignIn /> */}
+        {/* <ChooseKigali /> */}
+        {/* <SplashScreen /> */}
         {/* <SignUp /> */}
-        <StatusBar style="auto" />
       </View>
     );
   }
