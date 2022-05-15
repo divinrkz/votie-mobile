@@ -1,12 +1,12 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import TextLogo from "../components/TextLogo";
 
 export default function SplashScreen() {
   return (
-    <View style={styles.container}>
-        <TextLogo/>
-    </View>
+        <View style={styles.container}>
+            <TextLogo type="lander"/>
+        </View>
 );
 };
 
