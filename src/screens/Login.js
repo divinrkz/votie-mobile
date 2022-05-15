@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_700Bold",
   },
   formTextSignIn: {
-    fontSize: "15px",
+    fontSize: 15,
     paddingBottom: "1%",
     color: "#737373",
   },
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: "15px",
+    fontSize: 15,
     fontWeight: "bold",
     textAlign: "center",
   },
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   formTextSignUp: {
-    fontSize: "15px",
+    fontSize: 15,
     paddingBottom: "1%",
     color: "#F7941D",
     fontWeight: "bold",
