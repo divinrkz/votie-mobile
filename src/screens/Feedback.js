@@ -6,7 +6,7 @@ import { Rating } from 'react-native-ratings';
 export default function Feedback() {
   return (
     <View style={styles.container}>
-      <View style={styles.mb}>
+      <View style={[styles.mb,{marginTop: "20%"}]}>
         <Text style={styles.centered}>
           Yayy! {"\n"}
           We value all feedback,{"\n"}
@@ -38,17 +38,19 @@ export default function Feedback() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#000000",
-    width: Dimensions.get("window").width,
+    width: "100%",
+    height: "100%",
     padding: "15%",
-    height: Dimensions.get("window").height,
   },
   centered: {
     textAlign: "center",
     color: "#F7941D",
     fontWeight: "bold",
+    fontSize: 20,
+    fontFamily: "Roboto_700Bold",
   },
   mb: {
-    marginBottom: "5%",
+    marginBottom: "30%",
   },
   image: {
     width: 331,

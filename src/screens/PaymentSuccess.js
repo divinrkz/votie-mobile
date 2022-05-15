@@ -1,13 +1,12 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text, View, Image } from "react-native";
 import { Dimensions } from "react-native-web";
-import { Rating } from 'react-native-ratings';
 import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function PaymentSuccess() {
   return (
     <View style={styles.container}>
-      <View style={[styles.mb]}>
+      <View style={styles.mb}>
         <Image source={require('../../assets/transaction-success.png')} style={styles.icon} />
       </View>
       <View style={[styles.mb, { marginTop: -40 }]}>
@@ -27,7 +26,7 @@ export default function PaymentSuccess() {
       </View>
       <View style={styles.mb}>
         <TouchableOpacity title="sign in" style={styles.downloadButton}>
-          <Text style={styles.downloadButtonText}>Sign in with Google</Text>
+          <Text style={styles.downloadButtonText}>Download Invoice</Text>
         </TouchableOpacity>
       </View>
       <View style={[styles.mb]}>
@@ -40,10 +39,10 @@ export default function PaymentSuccess() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#000000",
-    width: Dimensions.get("window").width,
+    width: "100%",
+    height: "100%",
     padding: "15%",
     paddingTop: "5%",
-    height: Dimensions.get("window").height,
   },
   centered: {
     textAlign: "center",
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   mb: {
-    marginBottom: "5%",
+    marginBottom: "30%",
   },
   image: {
     width: 331,
@@ -73,11 +72,11 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     margin: "auto",
-    placeItems: "center",
+    alignItems: "center",
     justifyContent: "center"
   },
   downloadButtonText: {
     color: "#fff",
-    fontWeight: "medium"
+    fontWeight: 500
   }
 });
