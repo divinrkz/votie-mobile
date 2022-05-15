@@ -4,10 +4,14 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import AppLoading from "expo-app-loading";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import * as SplashScreen from "expo-splash-screen";
+import { useCallback } from "react";
+import SignIn from "./src/screens/SignIn";
 import SignUp from "./src/screens/SignUp";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -16,24 +20,26 @@ export default function App() {
     Roboto_400Regular_Italic,
   });
 
+  useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   } else {
     return (
-      <View style={styles.container}>
-        {/* <SignIn /> */}
-        <SignUp />
-        <StatusBar style="auto" />
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

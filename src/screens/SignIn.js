@@ -1,5 +1,8 @@
+import { useFormik } from "formik";
 import React from "react";
 import {
+  Alert,
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -7,8 +10,45 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Icon from "react-native-vector-icons/Feather";
 
-export default function Login() {
+export default function Login({ navigation }) {
+  const { handleChange, handleSubmit, values } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (values) => {
+      if (!values.email || !values.password) {
+        Alert.alert("Error", "You must fill in all fields");
+      }
+
+      const response = await fetch(
+        "http://196.223.240.154:8099/supapp/api/auth/signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            login: values.email,
+            password: values.password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        Alert.alert("Error", data.apierror.message);
+      } else {
+        //TODO: (@veritem) finish redirecting and handling tokens
+        // navigation.navigate("Home");
+        console.log({ data });
+      }
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
@@ -22,9 +62,34 @@ export default function Login() {
         </View>
 
         <View style={styles.inputsArea}>
-          <TextInput style={styles.input} placeholder="Email" />
-          <TextInput style={styles.input} placeholder="Password" />
-          <TouchableOpacity title="sign in" style={styles.button}>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              value={values.email}
+              onChangeText={handleChange("email")}
+              placeholder="You email"
+              autoCapitalize="none"
+            />
+            <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              value={values.password}
+              secureTextEntry={true}
+              autoCapitalize="none"
+              onChangeText={handleChange("password")}
+              placeholder="Password"
+            />
+            <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+          </View>
+          <TouchableOpacity
+            title="sign in"
+            style={styles.button}
+            onPress={() => {
+              handleSubmit();
+            }}
+          >
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableOpacity>
         </View>
@@ -37,10 +102,19 @@ export default function Login() {
 
         <View style={styles.authProvider}>
           <TouchableOpacity title="sign in" style={styles.authButton}>
+            <Image
+              source={require("../../assets/google.png")}
+              style={styles.authImage}
+            />
+
             <Text style={styles.authButtonText}>Sign in with Google</Text>
           </TouchableOpacity>
 
           <TouchableOpacity title="sign in" style={styles.authButton}>
+            <Image
+              source={require("../../assets/fb.png")}
+              style={styles.authImage}
+            />
             <Text style={styles.authButtonText}>Sign in with Facebook</Text>
           </TouchableOpacity>
         </View>
@@ -49,7 +123,14 @@ export default function Login() {
           <Text style={styles.forgotPassword}>Forgot password?</Text>
           <Text style={styles.dontHaveAccount}>
             Don't have an account?{" "}
-            <Text style={styles.formTextSignUp}>Sign up</Text>
+            <Text
+              style={styles.formTextSignUp}
+              onPress={() => {
+                navigation.navigate("SignUp");
+              }}
+            >
+              Sign up
+            </Text>
           </Text>
         </View>
       </View>
@@ -107,9 +188,17 @@ const styles = StyleSheet.create({
     paddingBottom: "1%",
     color: "#9098b2",
   },
+  icon: {
+    position: "absolute",
+    top: 18,
+    left: 12,
+  },
   inputsArea: {
     display: "flex",
     paddingVertical: "10%",
+  },
+  authImage: {
+    height: 40,
   },
   input: {
     borderWidth: 1,
@@ -117,11 +206,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#9098b2",
     marginBottom: 20,
+    paddingLeft: 40,
   },
   button: {
     backgroundColor: "#F7941D",
     borderRadius: 5,
     padding: "4%",
+    shadowColor: "rgba(0, 0, 0, 0.1)",
+    shadowOpacity: 0.8,
+    elevation: 6,
+    shadowRadius: 15,
+    shadowOffset: { width: 1, height: 13 },
   },
   buttonText: {
     color: "#fff",
@@ -151,13 +246,16 @@ const styles = StyleSheet.create({
   authButton: {
     borderWidth: 1,
     borderColor: "#9098b2",
-    padding: "5%",
+    padding: "3%",
     borderRadius: 5,
     marginVertical: 5,
+    flexDirection: "row",
+    alignItems: "center",
   },
   authButtonText: {
     color: "#9098b2",
     textAlign: "center",
+    marginLeft: 50,
   },
   formTextSignUp: {
     fontSize: 15,
