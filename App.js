@@ -1,18 +1,35 @@
-import { StatusBar } from "expo-status-bar";
+import {
+  Roboto_400Regular,
+  Roboto_400Regular_Italic,
+  Roboto_700Bold,
+  useFonts,
+} from "@expo-google-fonts/roboto";
+import AppLoading from "expo-app-loading";
 import { StyleSheet, View } from "react-native";
-import Login from "./src/screens/Login";
+import SignIn from "./src/screens/SignIn";
 import ChooseKigali from "./src/screens/ChooseKigali";
 import SplashScreen from "./src/screens/Splash";
+import SignUp from "./src/screens/SignUp";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      {/* <Login /> */}
-      <ChooseKigali></ChooseKigali>
-      {/* <SplashScreen /> */}
-      <StatusBar style="auto" />
-    </View>
-  );
+  let [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_700Bold,
+    Roboto_400Regular_Italic,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <View style={styles.container}>
+        {/* <SignIn /> */}
+        <ChooseKigali></ChooseKigali>
+        {/* <SplashScreen /> */}
+        {/* <SignUp /> */}
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
