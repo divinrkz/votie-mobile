@@ -4,26 +4,13 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import * as SplashScreen from "expo-splash-screen";
-import { useCallback } from "react";
-import ChooseKigaliCheckout from "./src/screens/ChooseKigaliCheckout";
-import SignIn from "./src/screens/SignIn";
-import React from "react";
-import AppLoading from "expo-app-loading";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text } from "react-native";
-import SignUp from "./src/screens/SignUp";
-import { NavigationContainer } from "@react-navigation/native";
-// import Login from "./src/screens/Login";
-import SearchScreen from "./src/screens/Search";
-import SplashScreen from "./src/screens/Splash";
-import "react-native-gesture-handler";
-import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Feather";
+import SplashScreen from "./src/screens/Splash";
 import {
-  AuthStack,
   BookmarkStack,
   DashboardStack,
   NotificationStack,
@@ -31,8 +18,10 @@ import {
   ShoppingCartStack,
 } from "./src/stacks";
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
+
 const Tab = createBottomTabNavigator();
+
 export default function App() {
   let [fontsLoaded] = useFonts({
     Roboto_400Regular,

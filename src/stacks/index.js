@@ -1,12 +1,11 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { ScrollView } from "react-native";
+import BookmarkScreen from "../screens/Bookmark";
 import DashboardScreen from "../screens/Dashboard";
 import NotificationScreen from "../screens/Notification";
 import SearchScreen from "../screens/Search";
+import ShoppingCartScreen from "../screens/ShoppingCart";
 import SignInScreen from "../screens/SignIn";
 import SignUpScreen from "../screens/SignUp";
-import BookmarkScreen from "../screens/Bookmark";
-import ShoppingCartScreen from "../screens/ShoppingCart";
 
 const Stack = createStackNavigator();
 

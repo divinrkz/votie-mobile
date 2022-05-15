@@ -1,5 +1,7 @@
+import { useFormik } from "formik";
 import React from "react";
 import {
+  Alert,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -10,6 +12,53 @@ import {
 import Icon from "react-native-vector-icons/Feather";
 
 export default function SignUp({ navigation }) {
+  const { handleSubmit, handleChange, handleReset, values } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      mobile: "",
+      fullName: "",
+    },
+    onSubmit: async (values) => {
+      if (
+        !values.email ||
+        !values.password ||
+        !values.mobile ||
+        !values.fullName
+      ) {
+        Alert.alert("Error", "You must fill in all fields");
+        return;
+      }
+
+      const response = await fetch(
+        "http://196.223.240.154:8099/supapp/api/auth/client/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+            mobile: values.mobile,
+            firstName: values.fullName.split(" ")[0],
+            lastName: values.fullName.split(" ")[1],
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        Alert.alert("Error", data.apierror.message);
+      } else {
+        Alert.alert("Success", "You have successfully signed up!");
+        handleReset();
+        navigation.navigate("SignIn");
+      }
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
@@ -29,6 +78,8 @@ export default function SignUp({ navigation }) {
               style={styles.input}
               placeholder="Fullname"
               autoCapitalize="none"
+              value={values.fullName}
+              onChangeText={handleChange("fullName")}
             />
             <Icon name="user" size={20} color="#9098b2" style={styles.icon} />
           </View>
@@ -39,6 +90,8 @@ export default function SignUp({ navigation }) {
               style={styles.input}
               placeholder="Phone number"
               autoCapitalize="none"
+              value={values.mobile}
+              onChangeText={handleChange("mobile")}
             />
           </View>
 
@@ -48,10 +101,31 @@ export default function SignUp({ navigation }) {
               style={styles.input}
               placeholder="Your email"
               autoCapitalize="none"
+              value={values.email}
+              onChangeText={handleChange("email")}
             />
           </View>
-          <TouchableOpacity title="sign in" style={styles.button}>
-            <Text style={styles.buttonText}>Proceed</Text>
+
+          <View>
+            <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+            <TextInput
+              style={styles.input}
+              secureTextEntry={true}
+              placeholder="Your password"
+              autoCapitalize="none"
+              value={values.password}
+              onChangeText={handleChange("password")}
+            />
+          </View>
+
+          <TouchableOpacity
+            title="sign in"
+            style={styles.button}
+            onPress={() => {
+              handleSubmit();
+            }}
+          >
+            <Text style={styles.buttonText}>proceed</Text>
           </TouchableOpacity>
         </View>
 

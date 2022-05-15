@@ -4,12 +4,12 @@ import {
   Alert,
   Image,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -52,91 +52,91 @@ export default function Login({ navigation }) {
 
   return (
     <ScrollView>
-    <SafeAreaView style={styles.container}>
-      <View style={styles.form}>
-        <View style={styles.logo}>
-          <Text style={styles.logoText}>Supa</Text>
-          <Text style={styles.logoTextM}>Menu</Text>
-        </View>
-        <View style={styles.formText}>
-          <Text style={styles.formTextWelcome}>Welcome...</Text>
-          <Text style={styles.formTextSignIn}>Sign in to continue</Text>
-        </View>
-
-        <View style={styles.inputsArea}>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              value={values.email}
-              onChangeText={handleChange("email")}
-              placeholder="You email"
-              autoCapitalize="none"
-            />
-            <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
+      <SafeAreaView style={styles.container}>
+        <View style={styles.form}>
+          <View style={styles.logo}>
+            <Text style={styles.logoText}>Supa</Text>
+            <Text style={styles.logoTextM}>Menu</Text>
           </View>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.input}
-              value={values.password}
-              secureTextEntry={true}
-              autoCapitalize="none"
-              onChangeText={handleChange("password")}
-              placeholder="Password"
-            />
-            <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+          <View style={styles.formText}>
+            <Text style={styles.formTextWelcome}>Welcome...</Text>
+            <Text style={styles.formTextSignIn}>Sign in to continue</Text>
           </View>
-          <TouchableOpacity
-            title="sign in"
-            style={styles.button}
-            onPress={() => {
-              handleSubmit();
-            }}
-          >
-            <Text style={styles.buttonText}>Sign in</Text>
-          </TouchableOpacity>
-        </View>
 
-        <View style={styles.horizontalContainer}>
-          <View style={styles.horizontalLine} />
-          <Text style={styles.or}>OR</Text>
-          <View style={styles.horizontalLine} />
-        </View>
-
-        <View style={styles.authProvider}>
-          <TouchableOpacity title="sign in" style={styles.authButton}>
-            <Image
-              source={require("../../assets/google.png")}
-              style={styles.authImage}
-            />
-
-            <Text style={styles.authButtonText}>Sign in with Google</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity title="sign in" style={styles.authButton}>
-            <Image
-              source={require("../../assets/fb.png")}
-              style={styles.authImage}
-            />
-            <Text style={styles.authButtonText}>Sign in with Facebook</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View>
-          <Text style={styles.forgotPassword}>Forgot password?</Text>
-          <Text style={styles.dontHaveAccount}>
-            Don't have an account?{" "}
-            <Text
-              style={styles.formTextSignUp}
+          <View style={styles.inputsArea}>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.input}
+                value={values.email}
+                onChangeText={handleChange("email")}
+                placeholder="You email"
+                autoCapitalize="none"
+              />
+              <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.input}
+                value={values.password}
+                secureTextEntry={true}
+                autoCapitalize="none"
+                onChangeText={handleChange("password")}
+                placeholder="Password"
+              />
+              <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+            </View>
+            <TouchableOpacity
+              title="sign in"
+              style={styles.button}
               onPress={() => {
-                navigation.navigate("SignUp");
+                handleSubmit();
               }}
             >
-              Sign up
+              <Text style={styles.buttonText}>Sign in</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.horizontalContainer}>
+            <View style={styles.horizontalLine} />
+            <Text style={styles.or}>OR</Text>
+            <View style={styles.horizontalLine} />
+          </View>
+
+          <View style={styles.authProvider}>
+            <TouchableOpacity title="sign in" style={styles.authButton}>
+              <Image
+                source={require("../../assets/google.png")}
+                style={styles.authImage}
+              />
+
+              <Text style={styles.authButtonText}>Sign in with Google</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity title="sign in" style={styles.authButton}>
+              <Image
+                source={require("../../assets/fb.png")}
+                style={styles.authImage}
+              />
+              <Text style={styles.authButtonText}>Sign in with Facebook</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View>
+            <Text style={styles.forgotPassword}>Forgot password?</Text>
+            <Text style={styles.dontHaveAccount}>
+              Don't have an account?{" "}
+              <Text
+                style={styles.formTextSignUp}
+                onPress={() => {
+                  navigation.navigate("SignUp");
+                }}
+              >
+                Sign up
+              </Text>
             </Text>
-          </Text>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
     </ScrollView>
   );
 }
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7941D",
     width: "100%",
     height: "100%",
-    flex: 1
+    flex: 1,
   },
   logo: {
     display: "flex",
