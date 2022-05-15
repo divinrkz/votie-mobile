@@ -18,7 +18,7 @@ export default function Feedback() {
         <Rating
           type="custom"
           ratingColor='#F7941D'
-          ratingImage={require('../assets/star.png')}
+          ratingImage={require('../../assets/star.png')}
           ratingBackgroundColor='transparent'
         />
       </View>
@@ -29,7 +29,7 @@ export default function Feedback() {
         </Text>
       </View>
       <View style={[styles.mb]}>
-        <Image source={require('../assets/yellow-logo.svg')} style={styles.image} />
+        <Image source={require('../../assets/yellow-logo.svg')} style={styles.image} />
       </View>
     </View>
   );

@@ -8,6 +8,7 @@ import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import SignUp from "./src/screens/SignUp";
+import Feedback from "./src/screens/MenuSelector";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,7 +23,7 @@ export default function App() {
     return (
       <View style={styles.container}>
         {/* <SignIn /> */}
-        <SignUp />
+        <Feedback />
         <StatusBar style="auto" />
       </View>
     );
