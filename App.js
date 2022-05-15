@@ -10,6 +10,7 @@ import SignIn from "./src/screens/SignIn";
 import ChooseKigali from "./src/screens/ChooseKigali";
 import SplashScreen from "./src/screens/Splash";
 import SignUp from "./src/screens/SignUp";
+// import SignIn from "./src/screens/SignIn";
 
 export default function App() {
   let [fontsLoaded] = useFonts({

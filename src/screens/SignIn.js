@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Image,
   SafeAreaView,
   StyleSheet,
   Text,
@@ -7,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function Login() {
   return (
@@ -22,8 +24,19 @@ export default function Login() {
         </View>
 
         <View style={styles.inputsArea}>
-          <TextInput style={styles.input} placeholder="Email" />
-          <TextInput style={styles.input} placeholder="Password" />
+          <View style={styles.inputContainer}>
+            <TextInput style={styles.input} placeholder="You email" />
+            <Icon
+              name="envelope"
+              size={20}
+              color="#9098b2"
+              style={styles.icon}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <TextInput style={styles.input} placeholder="Password" />
+            <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+          </View>
           <TouchableOpacity title="sign in" style={styles.button}>
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableOpacity>
@@ -37,10 +50,19 @@ export default function Login() {
 
         <View style={styles.authProvider}>
           <TouchableOpacity title="sign in" style={styles.authButton}>
+            <Image
+              source={require("../../assets/google.png")}
+              style={styles.authImage}
+            />
+
             <Text style={styles.authButtonText}>Sign in with Google</Text>
           </TouchableOpacity>
 
           <TouchableOpacity title="sign in" style={styles.authButton}>
+            <Image
+              source={require("../../assets/fb.png")}
+              style={styles.authImage}
+            />
             <Text style={styles.authButtonText}>Sign in with Facebook</Text>
           </TouchableOpacity>
         </View>
@@ -107,9 +129,17 @@ const styles = StyleSheet.create({
     paddingBottom: "1%",
     color: "#9098b2",
   },
+  icon: {
+    position: "absolute",
+    top: 18,
+    left: 12,
+  },
   inputsArea: {
     display: "flex",
     paddingVertical: "10%",
+  },
+  authImage: {
+    height: 40,
   },
   input: {
     borderWidth: 1,
@@ -117,6 +147,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#9098b2",
     marginBottom: 20,
+    paddingLeft: 40,
   },
   button: {
     backgroundColor: "#F7941D",
@@ -151,13 +182,16 @@ const styles = StyleSheet.create({
   authButton: {
     borderWidth: 1,
     borderColor: "#9098b2",
-    padding: "5%",
+    padding: "3%",
     borderRadius: 5,
     marginVertical: 5,
+    flexDirection: "row",
+    alignItems: "center",
   },
   authButtonText: {
     color: "#9098b2",
     textAlign: "center",
+    marginLeft: 50,
   },
   formTextSignUp: {
     fontSize: 15,
