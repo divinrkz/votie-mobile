@@ -7,6 +7,7 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
+import ChooseKigaliCheckout from "./src/screens/ChooseKigaliCheckout";
 import SignUp from "./src/screens/SignUp";
 
 // import SignIn from "./src/screens/SignIn";
@@ -30,10 +31,11 @@ export default function App() {
     return (
       <View style={styles.container}>
         {/* <SignIn /> */}
-        <SignUp />
+        {/* <SignUp /> */}
         {/* <StatusBar style="auto" /> */}
         {/* <SignIn /> */}
         {/* <ChooseKigali /> */}
+        <ChooseKigaliCheckout />
         {/* <SplashScreen /> */}
         {/* <SignUp /> */}
       </View>
