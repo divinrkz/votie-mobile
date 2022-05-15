@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import Login from "./screens/Login";
-import MenuSelector from "./screens/MenuSelector";
+import Login from "./src/screens/Login";
+import MenuSelector from "./src/screens/MenuSelector";
 
 export default function App() {
   return (

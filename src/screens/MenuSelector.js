@@ -17,7 +17,7 @@ export default function MenuSelector() {
             return (
               <View key={opt} style={styles.menuListItem}>
                 <Text style={styles.menuListItemText}>{opt}</Text>
-                <Icon name="rocket" size={30} color="#fff" />
+                <Icon name="angle-right" size={30} color="#fff" />
               </View>
             );
           })}
