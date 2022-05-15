@@ -1,15 +1,12 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import TabNavigation from "../components/navigation/TabNavigation";
-import TextLogo from "../components/TextLogo";
 
 export default function SearchScreen() {
   return (
         <View style={styles.container}>
-            <Text>Ngaho set</Text>
-            {/* <TabNavigation /> */}
+            <Text>Search Screen</Text>
         </View>
-);
+    );
 };
 
 

@@ -7,9 +7,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { ScrollView } from "react-native";
 
 export default function Login() {
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
         <View style={styles.logo}>
@@ -25,7 +27,6 @@ export default function Login() {
           <TextInput style={styles.input} placeholder="Email" />
           <TextInput style={styles.input} placeholder="Password" />
           <TouchableOpacity title="sign in" style={styles.button}>
-            {/* style={styles.button} */}
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableOpacity>
         </View>
@@ -55,6 +56,7 @@ export default function Login() {
         </View>
       </View>
     </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7941D",
     width: "100%",
     height: "100%",
+    flex: 1
   },
   logo: {
     display: "flex",
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
   formTextSignIn: {
     fontSize: 15,
     paddingBottom: "1%",
-    color: "#737373",
+    color: "#9098b2",
   },
   inputsArea: {
     display: "flex",
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: "5%",
     borderRadius: 5,
-    borderColor: "#ccc",
+    borderColor: "#9098b2",
     marginBottom: 20,
   },
   button: {
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   horizontalLine: {
-    borderBottomColor: "#737373",
+    borderBottomColor: "#9098b2",
     borderBottomWidth: 1,
     flex: 1,
     height: 1,
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
   or: {
     width: 50,
     textAlign: "center",
-    color: "#737373",
+    color: "#9098b2",
   },
   authProvider: {
     marginVertical: "5%",
@@ -151,13 +154,13 @@ const styles = StyleSheet.create({
   },
   authButton: {
     borderWidth: 1,
-    borderColor: "#cfcfcf",
+    borderColor: "#9098b2",
     padding: "5%",
     borderRadius: 5,
     marginVertical: 5,
   },
   authButtonText: {
-    color: "#ccc",
+    color: "#9098b2",
     textAlign: "center",
   },
   formTextSignUp: {
@@ -168,7 +171,7 @@ const styles = StyleSheet.create({
   },
   dontHaveAccount: {
     textAlign: "center",
-    color: "#737373",
+    color: "#9098b2",
     paddingVertical: "3%",
   },
   forgotPassword: {

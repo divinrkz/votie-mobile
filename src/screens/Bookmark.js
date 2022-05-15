@@ -1,14 +1,12 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import TextLogo from "../components/TextLogo";
+import { StyleSheet, View, Text } from "react-native";
 
-export default function SplashScreen() {
-    
+export default function SearchScreen() {
   return (
         <View style={styles.container}>
-            <TextLogo type="lander"/>
+            <Text>Bookmark Screen</Text>
         </View>
-);
+    );
 };
 
 
