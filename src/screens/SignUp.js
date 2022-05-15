@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function SignUp() {
   return (
@@ -23,11 +24,26 @@ export default function SignUp() {
         </View>
 
         <View style={styles.inputsArea}>
-          <TextInput style={styles.input} placeholder="Fullname" />
-          <TextInput style={styles.input} placeholder="Phone number" />
-          <TextInput style={styles.input} placeholder="Your email" />
+          <View>
+            <TextInput style={styles.input} placeholder="Fullname" />
+            <Icon name="user" size={20} color="#9098b2" style={styles.icon} />
+          </View>
+
+          <View>
+            <Icon name="phone" size={20} color="#9098b2" style={styles.icon} />
+            <TextInput style={styles.input} placeholder="Phone number" />
+          </View>
+
+          <View>
+            <Icon
+              name="envelope"
+              size={20}
+              color="#9098b2"
+              style={styles.icon}
+            />
+            <TextInput style={styles.input} placeholder="Your email" />
+          </View>
           <TouchableOpacity title="sign in" style={styles.button}>
-            {/* style={styles.button} */}
             <Text style={styles.buttonText}>Proceed</Text>
           </TouchableOpacity>
         </View>
@@ -112,6 +128,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#9098b2",
     marginBottom: 20,
+    paddingLeft: 40,
   },
   button: {
     backgroundColor: "#F7941D",
@@ -155,5 +172,10 @@ const styles = StyleSheet.create({
   register: {
     color: "#F7941D",
     fontWeight: "bold",
+  },
+  icon: {
+    position: "absolute",
+    top: 18,
+    left: 12,
   },
 });
