@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -50,6 +51,7 @@ export default function Login({ navigation }) {
   });
 
   return (
+    <ScrollView>
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
         <View style={styles.logo}>
@@ -135,6 +137,7 @@ export default function Login({ navigation }) {
         </View>
       </View>
     </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -143,6 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7941D",
     width: "100%",
     height: "100%",
+    flex: 1
   },
   logo: {
     display: "flex",
