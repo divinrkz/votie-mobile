@@ -7,7 +7,7 @@ import {
 import AppLoading from "expo-app-loading";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
-import Login from "./screens/Login";
+import Login from "./src/screens/Login";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
