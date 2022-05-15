@@ -4,9 +4,11 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
-import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
+import { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 import SignUp from "./src/screens/SignUp";
+
 // import SignIn from "./src/screens/SignIn";
 
 export default function App() {
@@ -16,8 +18,14 @@ export default function App() {
     Roboto_400Regular_Italic,
   });
 
+  useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   } else {
     return (
       <View style={styles.container}>
