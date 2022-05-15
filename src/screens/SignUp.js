@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
@@ -25,18 +25,30 @@ export default function SignUp() {
 
         <View style={styles.inputsArea}>
           <View>
-            <TextInput style={styles.input} placeholder="Fullname" />
+            <TextInput
+              style={styles.input}
+              placeholder="Fullname"
+              autoCapitalize="none"
+            />
             <Icon name="user" size={20} color="#9098b2" style={styles.icon} />
           </View>
 
           <View>
             <Icon name="phone" size={20} color="#9098b2" style={styles.icon} />
-            <TextInput style={styles.input} placeholder="Phone number" />
+            <TextInput
+              style={styles.input}
+              placeholder="Phone number"
+              autoCapitalize="none"
+            />
           </View>
 
           <View>
             <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
-            <TextInput style={styles.input} placeholder="Your email" />
+            <TextInput
+              style={styles.input}
+              placeholder="Your email"
+              autoCapitalize="none"
+            />
           </View>
           <TouchableOpacity title="sign in" style={styles.button}>
             <Text style={styles.buttonText}>Proceed</Text>
@@ -51,12 +63,26 @@ export default function SignUp() {
 
         <Text style={styles.haveAnAccount}>If you have a PMG account</Text>
 
-        <TouchableOpacity title="sign in" style={styles.button}>
+        <TouchableOpacity
+          title="sign in"
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("SignIn");
+          }}
+        >
           <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
 
         <Text style={styles.dontHaveAccount}>
-          Don't have an account? <Text style={styles.register}>Register</Text>
+          Don't have an account?{" "}
+          <Text
+            style={styles.register}
+            onPress={() => {
+              navigation.navigate("SignUp");
+            }}
+          >
+            Register
+          </Text>
         </Text>
       </View>
     </SafeAreaView>

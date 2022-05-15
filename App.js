@@ -4,13 +4,16 @@ import {
   Roboto_700Bold,
   useFonts,
 } from "@expo-google-fonts/roboto";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { StyleSheet, View } from "react-native";
 import ChooseKigaliCheckout from "./src/screens/ChooseKigaliCheckout";
+import SignIn from "./src/screens/SignIn";
 import SignUp from "./src/screens/SignUp";
 
-// import SignIn from "./src/screens/SignIn";
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -29,25 +32,16 @@ export default function App() {
     return null;
   } else {
     return (
-      <View style={styles.container}>
-        {/* <SignIn /> */}
-        {/* <SignUp /> */}
-        {/* <StatusBar style="auto" /> */}
-        {/* <SignIn /> */}
-        {/* <ChooseKigali /> */}
-        <ChooseKigaliCheckout />
-        {/* <SplashScreen /> */}
-        {/* <SignUp /> */}
-      </View>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

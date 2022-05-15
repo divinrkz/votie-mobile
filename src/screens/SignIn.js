@@ -1,5 +1,7 @@
+import { useFormik } from "formik";
 import React from "react";
 import {
+  Alert,
   Image,
   SafeAreaView,
   StyleSheet,
@@ -10,7 +12,43 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
-export default function Login() {
+export default function Login({ navigation }) {
+  const { handleChange, handleSubmit, values } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: async (values) => {
+      if (!values.email || !values.password) {
+        Alert.alert("Error", "You must fill in all fields");
+      }
+
+      const response = await fetch(
+        "http://196.223.240.154:8099/supapp/api/auth/signin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            login: values.email,
+            password: values.password,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        Alert.alert("Error", data.apierror.message);
+      } else {
+        //TODO: (@veritem) finish redirecting and handling tokens
+        // navigation.navigate("Home");
+        console.log({ data });
+      }
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
@@ -25,14 +63,33 @@ export default function Login() {
 
         <View style={styles.inputsArea}>
           <View style={styles.inputContainer}>
-            <TextInput style={styles.input} placeholder="You email" />
+            <TextInput
+              style={styles.input}
+              value={values.email}
+              onChangeText={handleChange("email")}
+              placeholder="You email"
+              autoCapitalize="none"
+            />
             <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
           </View>
           <View style={styles.inputContainer}>
-            <TextInput style={styles.input} placeholder="Password" />
+            <TextInput
+              style={styles.input}
+              value={values.password}
+              secureTextEntry={true}
+              autoCapitalize="none"
+              onChangeText={handleChange("password")}
+              placeholder="Password"
+            />
             <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
           </View>
-          <TouchableOpacity title="sign in" style={styles.button}>
+          <TouchableOpacity
+            title="sign in"
+            style={styles.button}
+            onPress={() => {
+              handleSubmit();
+            }}
+          >
             <Text style={styles.buttonText}>Sign in</Text>
           </TouchableOpacity>
         </View>
@@ -66,7 +123,14 @@ export default function Login() {
           <Text style={styles.forgotPassword}>Forgot password?</Text>
           <Text style={styles.dontHaveAccount}>
             Don't have an account?{" "}
-            <Text style={styles.formTextSignUp}>Sign up</Text>
+            <Text
+              style={styles.formTextSignUp}
+              onPress={() => {
+                navigation.navigate("SignUp");
+              }}
+            >
+              Sign up
+            </Text>
           </Text>
         </View>
       </View>
