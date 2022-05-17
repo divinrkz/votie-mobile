@@ -7,11 +7,11 @@ export default function SearchScreen(props) {
 
   return (
     <View style={styles.container}>
+    
       <SearchBar
         style={styles.input}
         onChangeText={onChangeText}
         round
-   
         iconColor={Colors.default}
         leftIconContainerStyle={{ color: Colors.default, fontSize: 100 }}
         inputContainerStyle={{ backgroundColor: "#FFFFFF" }}
