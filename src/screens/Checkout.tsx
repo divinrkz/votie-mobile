@@ -3,13 +3,10 @@ import {
     StyleSheet,
     Text,
     View,
-    TextInput,
-    TouchableOpacity,
-    Icon,
     Image,
     FlatList,
 } from 'react-native';
-import Colors from '../../util/colors';
+import Colors from '../util/colors';
 import { Button } from 'react-native-elements';
 import { ListItem } from '../components/screens/Checkout';
 

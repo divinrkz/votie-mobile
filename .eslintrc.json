@@ -43,7 +43,6 @@
         "ignoreClassNames": false,
         "ignoreStyleProperties": false
       }
-    ],
-    "unused-imports/no-unused-imports-ts": 2
+    ]
   }
 }
