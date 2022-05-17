@@ -1,13 +1,13 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function SearchScreen() {
-  return (
+    return (
         <View style={styles.container}>
             <Text>Bookmark Screen</Text>
         </View>
     );
-};
+}
 
 
 const styles = StyleSheet.create({

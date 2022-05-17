@@ -1,13 +1,13 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function DashboardScreen() {
-  return (
+    return (
         <View style={styles.container}>
             <Text>Dashboard Screen</Text>
         </View>
     );
-};
+}
 
 
 const styles = StyleSheet.create({

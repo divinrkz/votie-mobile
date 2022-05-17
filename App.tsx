@@ -1,105 +1,103 @@
 import {
-  Roboto_400Regular,
-  Roboto_400Regular_Italic,
-  Roboto_700Bold,
-  useFonts,
-} from "@expo-google-fonts/roboto";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
-import "react-native-gesture-handler";
-import Icon from "react-native-vector-icons/Feather";
-import SplashScreen from "./src/screens/Splash";
+    Roboto_400Regular,
+    Roboto_400Regular_Italic,
+    Roboto_700Bold,
+    useFonts,
+} from '@expo-google-fonts/roboto';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import 'react-native-gesture-handler';
+import SplashScreen from './src/screens/Splash';
 import {
-  BookmarkStack,
-  DashboardStack,
-  NotificationStack,
-  SearchStack,
-  ShoppingCartStack,
-  CheckoutStack,
-} from "./src/stacks";
-import SignIn from "./src/screens/SignIn";
-import SignUp from "./src/screens/SignUp";
+    BookmarkStack,
+    DashboardStack,
+    NotificationStack,
+    SearchStack,
+    ShoppingCartStack,
+    CheckoutStack,
+} from './src/stacks';
+import SignIn from './src/screens/SignIn';
+import SignUp from './src/screens/SignUp';
 
 const Stack = createStackNavigator();
 
 // const Tab = createBottomTabNavigator();
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    Roboto_400Regular,
-    Roboto_700Bold,
-    Roboto_400Regular_Italic,
-  });
+    let [fontsLoaded] = useFonts({
+        Roboto_400Regular,
+        Roboto_700Bold,
+        Roboto_400Regular_Italic,
+    });
 
-  // useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
+    // useCallback(async () => {
+    //   if (fontsLoaded) {
+    //     await SplashScreen.hideAsync();
+    //   }
+    // }, [fontsLoaded]);
 
-  if (!fontsLoaded) {
-    return <SplashScreen />;
-  } else {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="SignIn"
-            component={SignIn}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="SignUp"
-            component={SignUp}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Dashboard"
-            options={{
-              headerShown: false,
-            }}
-            component={DashboardStack}
-          />
-          <Stack.Screen
-            name="Search"
-            options={{
-              headerShown: false,
-            }}
-            component={SearchStack}
-          />
-          <Stack.Screen
-            name="Bookmark"
-            options={{
-              headerShown: false,
-            }}
-            component={BookmarkStack}
-          />
-          <Stack.Screen
-            name="ShoppingCart"
-            options={{
-              headerShown: false,
-            }}
-            component={ShoppingCartStack}
-          />
-          <Stack.Screen
-            name="Notification"
-            options={{
-              headerShown: false,
-            }}
-            component={NotificationStack}
-          />
+    if (!fontsLoaded) {
+        return <SplashScreen />;
+    } else {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="SignIn"
+                        component={SignIn}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="SignUp"
+                        component={SignUp}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Dashboard"
+                        options={{
+                            headerShown: false,
+                        }}
+                        component={DashboardStack}
+                    />
+                    <Stack.Screen
+                        name="Search"
+                        options={{
+                            headerShown: false,
+                        }}
+                        component={SearchStack}
+                    />
+                    <Stack.Screen
+                        name="Bookmark"
+                        options={{
+                            headerShown: false,
+                        }}
+                        component={BookmarkStack}
+                    />
+                    <Stack.Screen
+                        name="ShoppingCart"
+                        options={{
+                            headerShown: false,
+                        }}
+                        component={ShoppingCartStack}
+                    />
+                    <Stack.Screen
+                        name="Notification"
+                        options={{
+                            headerShown: false,
+                        }}
+                        component={NotificationStack}
+                    />
           
-          <Stack.Screen name="Dashboard" component={DashboardStack} />
-          <Stack.Screen name="Search" component={SearchStack} />
-          <Stack.Screen name="Bookmark" component={BookmarkStack} />
-          <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
-          <Stack.Screen name="Notification" component={NotificationStack} />
-          <Stack.Screen name="Checkout" component={CheckoutStack} />
-        </Stack.Navigator>
+                    <Stack.Screen name="Dashboard" component={DashboardStack} />
+                    <Stack.Screen name="Search" component={SearchStack} />
+                    <Stack.Screen name="Bookmark" component={BookmarkStack} />
+                    <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
+                    <Stack.Screen name="Notification" component={NotificationStack} />
+                    <Stack.Screen name="Checkout" component={CheckoutStack} />
+                </Stack.Navigator>
 
-        {/* <Tab.Navigator
+                {/* <Tab.Navigator
           initialRouteName="Dashboard"
           labeled={false}
           tabBarOptions={{
@@ -215,7 +213,7 @@ export default function App() {
             }}
           />
         </Tab.Navigator> */}
-      </NavigationContainer>
-    );
-  }
+            </NavigationContainer>
+        );
+    }
 }
