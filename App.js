@@ -69,6 +69,20 @@ export default function App() {
           }}
         >
           <Tab.Screen
+            name="Search"
+            component={SearchStack}
+            options={{
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Icon.Button
+                  name="briefcase"
+                  backgroundColor="transparent"
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
             name="DashboardStack"
             component={DashboardStack}
             options={{
@@ -96,20 +110,7 @@ export default function App() {
               ),
             }}
           />
-          <Tab.Screen
-            name="Search"
-            component={SearchStack}
-            options={{
-              headerShown: false,
-              tabBarIcon: ({ color, size }) => (
-                <Icon.Button
-                  name="briefcase"
-                  backgroundColor="transparent"
-                  color="black"
-                />
-              ),
-            }}
-          />
+
           <Tab.Screen
             name="Bookmark"
             component={BookmarkStack}

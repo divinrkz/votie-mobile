@@ -1,22 +1,31 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput,Icon } from "react-native";
-// import { SearchBar } from 'react-native-elements';
-
+import { StyleSheet, Text, View, TextInput, Icon, Image } from "react-native";
+import { SearchBar } from "react-native-elements";
+import Colors from "../../util/colors";
 export default function SearchScreen(props) {
   const [text, onChangeText] = React.useState("");
 
   return (
     <View style={styles.container}>
-     
-      <TextInput
+      <SearchBar
         style={styles.input}
         onChangeText={onChangeText}
+        round
+   
+        iconColor={Colors.default}
+        leftIconContainerStyle={{ color: Colors.default, fontSize: 100 }}
+        inputContainerStyle={{ backgroundColor: "#FFFFFF" }}
+        containerStyle={{ backgroundColor: Colors.default, border: 0 }}
+        inputStyle={{ backgroundColor: "#FFFFFF" }}
         placeholder="Search for your preferred restaurant"
         value={text}
       />
       <View style={styles.desc}>
         <Text style={styles.middleText}>or</Text>
-
+        <Image
+          source={require("../../assets/qr-code.png")}
+          style={styles.img}
+        />
         <Text style={styles.bottomText}>Scan , Pay & Enjoy!</Text>
       </View>
     </View>
@@ -27,21 +36,13 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
     width: "100%",
-    backgroundColor: "#F7941D",
+    backgroundColor: Colors.default,
     alignItems: "center",
-    display: "flex",
+    // display: "flex",
+    paddingTop: 100,
   },
   input: {
-    height: 40,
-    marginTop: 100,
-    borderWidth: 1,
-    width: 350,
-    padding: 10,
-    borderRadius: 30,
-    backgroundColor: "#FFFFFF",
-  },
-  searchIcon: {
-    padding: 10,
+    width: 300,
   },
   desc: {
     justifyContent: "center",
@@ -50,7 +51,8 @@ const styles = StyleSheet.create({
   middleText: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 30,
+    marginTop: 60,
+    paddingTop:10,
     marginBottom: 20,
     fontWeight: "bold",
     color: "#171717",
@@ -60,5 +62,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontWeight: "bold",
     fontSize: 30,
+  },
+  img: {
+    marginTop: 60,
+    width: 150,
+    height: 150,
   },
 });
