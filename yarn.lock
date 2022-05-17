@@ -2480,7 +2480,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-native@npm:^0.67.7":
+"@types/react-native-vector-icons@npm:^6.4.10":
+  version: 6.4.10
+  resolution: "@types/react-native-vector-icons@npm:6.4.10"
+  dependencies:
+    "@types/react": "*"
+    "@types/react-native": "*"
+  checksum: 765319410bcaa9fb89545750ef257d11c2e92f84ab3117db5fc45845cfebcb979f0aca9c5c101cf6f1e5fbf14a207c5c732fd4e00801e9bec4aabaf1a1a15b11
+  languageName: node
+  linkType: hard
+
+"@types/react-native@npm:*, @types/react-native@npm:^0.67.7":
   version: 0.67.7
   resolution: "@types/react-native@npm:0.67.7"
   dependencies:
@@ -2498,7 +2508,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.9":
+"@types/react@npm:*":
   version: 18.0.9
   resolution: "@types/react@npm:18.0.9"
   dependencies:
@@ -2506,6 +2516,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 162364dad716d9017ee34aabf2ea37499709ebbdef70392ae1b39225985971e1a46f121efb9c5c7da92144ee1d96d4525df806a7c1c03a5db7fd31dd034ddc7a
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:~17.0.21":
+  version: 17.0.45
+  resolution: "@types/react@npm:17.0.45"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 3cc13a02824c13f6fa4807a83abd065ac1d9943359e76bd995cc7cd2b4148c1176ebd54a30a9f4eb8a0f141ff359d712876f256c4fee707e4290607ef8410b3e
   languageName: node
   linkType: hard
 
@@ -9024,8 +9045,9 @@ __metadata:
     "@react-navigation/native-stack": ^6.6.2
     "@react-navigation/stack": ^6.2.1
     "@types/jest": ^27.5.1
-    "@types/react": ^18.0.9
+    "@types/react": ~17.0.21
     "@types/react-native": ^0.67.7
+    "@types/react-native-vector-icons": ^6.4.10
     "@types/react-test-renderer": ^18.0.0
     expo: ~45.0.0
     expo-app-loading: ~2.0.0
