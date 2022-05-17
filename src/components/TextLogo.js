@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function TextLogo(props) {
+export default function TextLogo({size='lg', type='lander'}) {
   return (
     <View style={styles.container}>
-        <View>
-            <Text style={styles.textLogo}>Supa</Text>
-            <Text style={styles.textLogo}>Menu</Text>
+        <View style={{display: 'flex', flexDirection: 'row'}}>
+            <Text style={{...styles[`${size}`], ...styles.textBlack}}>Supa</Text>
+            <Text style={{...styles[`${size}`], ...(type === 'lander' ? styles.textWhite : styles.textYellow)}}>Menu</Text>
         </View>
     </View>
 );
@@ -23,7 +23,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    textLogo: {
+    xs: {
+        fontSize: 12
+    },
+    sm: {
+        fontSize: 18
+    },
+    md: {
         fontSize: 24
+    },
+    lg: {
+        fontSize: 33
+    },
+    textBlack: {
+      color: 'white'  
+    },
+    textWhite: {
+        color: 'black'
+    },
+    textYellow: {
+        color: "#F7941D"
     }
 });

@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View, TextInput,Icon } from "react-native";
 // import { SearchBar } from 'react-native-elements';
 
-export default function SearchPage(props) {
+export default function SearchScreen(props) {
   const [text, onChangeText] = React.useState("");
 
   return (
