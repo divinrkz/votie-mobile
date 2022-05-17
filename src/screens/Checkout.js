@@ -7,16 +7,12 @@ import {
   TouchableOpacity,
   Icon,
   Image,
+  FlatList,
 } from "react-native";
 import Colors from "../../util/colors";
 import { Button } from "react-native-elements";
 import { ListItem } from "../components/screens/Checkout";
 
-const items = [
-  { imageUrl: "", name: "MTN Mobile Money" },
-  { imageUrl: "", name: "Airtel Money" },
-  { imageUrl: "", name: "Cash" },
-];
 export default function CheckoutScreen() {
   return (
     <View style={styles.container}>
@@ -33,7 +29,10 @@ export default function CheckoutScreen() {
           />
         </View>
         <View style={styles.textSummaryView}>
-          <Text style={styles.checkoutText}>Checkout</Text>
+          <View style={styles.checkoutPayOptionView}>
+            <Text style={styles.checkoutText}>Checkout</Text>
+            <Image source={require("../../assets/visa.png")} style={styles.visaIcon}/>
+          </View>
           <View style={styles.amountDescView}>
             <Text style={styles.amountText}>Frw 16,000</Text>
             <Text style={styles.includeVatText}>Including VAT (18%)</Text>
@@ -49,34 +48,43 @@ export default function CheckoutScreen() {
         </View>
       </View>
 
-      <View>
-      <FlatList
-        data={[
-          {key: 'MOMO',name:"MTN Mobile Money",imageUrl:'../../assets/momo.png'},
-          {key: 'AIRTEL',name:"Airtel Money",imageUrl:'../../assets/airtel.png'},
-          {key: 'CASH',name:"Cash",imageUrl:'../../assets/cash.png'}
-        ]}
-        renderItem={({item}) => <ListItem name={item.name} imageUrl={item.imageUrl}/>}
-      />
+      <View style={styles.listView}>
+        <FlatList
+          data={[
+            { key: "MOMO", name: "MTN Mobile Money", imageUrl: "momo.png" },
+            { key: "AIRTEL", name: "Airtel Money", imageUrl: "airtel.png" },
+            { key: "CASH", name: "Cash", imageUrl: "cash.png" },
+          ]}
+          renderItem={({ item }) => (
+            <ListItem name={item.name} imgUrl={item.imageUrl} />
+          )}
+        />
       </View>
 
       <View style={styles.proceedView}>
-        <Text style={styles.assText}></Text>
-        <TouchableOpacity title="Pay for the order" style={styles.payButton}>
-          {/* <Icon
-            name="shopping-cart"
-            backgroundColor="transparent"
-            color="black"
-          /> */}
-          <Text style={styles.payButtonText}>Pay for the order</Text>
-        </TouchableOpacity>
+        <Text style={styles.assText}>
+          We will send you an order details to your email after the successfull
+          payment
+        </Text>
 
-        <View style={styles.btmLine}></View>
+        <View style={styles.bottomTools}>
+          <Button
+            title="Pay for the order"
+            buttonStyle={styles.payButton}
+            icon={{
+              name: "lock",
+              size: 30,
+              color: "#FFFF",
+            }}
+          >
+            <Text style={styles.payButtonText}>Pay for the order</Text>
+          </Button>
+          <View style={styles.btmLine}></View>
+        </View>
       </View>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -85,10 +93,24 @@ const styles = StyleSheet.create({
     display: "flex",
   },
   summary: {
+    borderWidth: 0.5,
+    shadowColor: Colors.green,
+    shadowOpacity: 1,
+    shadowRadius: 10,
     width: "90%",
     marginRight: "10%",
     borderRadius: 50,
     backgroundColor: "#FFFF",
+  },
+  checkoutPayOptionView:{
+    flexDirection: "row",
+    flexWrap: "wrap"
+  },
+  visaIcon:{
+    marginTop: 12,
+    marginLeft:5,
+   width: 30,
+   height: 20
   },
   backIconView: {
     flexDirection: "row",
@@ -102,14 +124,16 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 40,
     flexDirection: "row",
-    flexWrap: 'wrap',
-
+    flexWrap: "wrap",
   },
-  amountDescView:{
-    marginLeft: 70
+  amountDescView: {
+    marginLeft: 45,
   },
-
-  checkoutText:{
+  listView: {
+    marginTop: 60,
+    paddingLeft: 30,
+  },
+  checkoutText: {
     marginLeft: 10,
     fontWeight: "bold",
     fontSize: 25,
@@ -133,9 +157,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
   },
-  momoOptionView:{
-    backgroundColor:Colors.green,
-    paddingLeft:20,
+  momoOptionView: {
+    backgroundColor: Colors.green,
+    paddingLeft: 20,
     justifyContent: "center",
     justItems: "center",
   },
@@ -156,15 +180,16 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
   },
   payButton: {
+    marginTop: 15,
     borderWidth: 1,
     backgroundColor: Colors.green,
     padding: "3%",
-    width: "60%",
-
+    width: 350,
+    height: 60,
     borderRadius: 15,
-    marginVertical: 5,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   payButtonText: {
     fontSize: 15,
@@ -178,13 +203,20 @@ const styles = StyleSheet.create({
   assText: {
     marginTop: 10,
     marginBottom: 10,
-    fontSize: 5,
+    fontSize: 15,
   },
   btmLine: {
+    marginTop: 10,
     fontWeight: "bold",
-    width: "200",
-    height: "40",
+    width: 200,
+    height: 7,
+    borderRadius: 10,
     backgroundColor: "black",
+  },
+  bottomTools: {
+    width: 400,
+    alignItems: "center",
+    justifyContent: "center",
   },
   backBtn: {
     backgroundColor: "white",
