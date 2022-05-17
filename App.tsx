@@ -6,6 +6,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Feather";
@@ -18,10 +19,12 @@ import {
   ShoppingCartStack,
   CheckoutStack,
 } from "./src/stacks";
+import SignIn from "./src/screens/SignIn";
+import SignUp from "./src/screens/SignUp";
 
-// const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
-const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -41,7 +44,25 @@ export default function App() {
   } else {
     return (
       <NavigationContainer>
-        <Tab.Navigator
+        <Stack.Navigator>
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="Dashboard" component={DashboardStack} />
+          <Stack.Screen name="Search" component={SearchStack} />
+          <Stack.Screen name="Bookmark" component={BookmarkStack} />
+          <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
+          <Stack.Screen name="Notification" component={NotificationStack} />
+        </Stack.Navigator>
+
+        {/* <Tab.Navigator
           initialRouteName="Dashboard"
           labeled={false}
           tabBarOptions={{
@@ -156,7 +177,7 @@ export default function App() {
               ),
             }}
           />
-        </Tab.Navigator>
+        </Tab.Navigator> */}
       </NavigationContainer>
     );
   }
