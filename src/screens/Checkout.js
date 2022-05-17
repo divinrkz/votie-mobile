@@ -11,6 +11,8 @@ import {
 import Colors from "../../util/colors";
 import { Button } from "react-native-elements";
 
+
+
 const items = [
   { imageUrl: "", name: "MTN Mobile Money" },
   { imageUrl: "", name: "Airtel Money" },
