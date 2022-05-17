@@ -54,11 +54,41 @@ export default function App() {
             component={SignUp}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Dashboard" component={DashboardStack} />
-          <Stack.Screen name="Search" component={SearchStack} />
-          <Stack.Screen name="Bookmark" component={BookmarkStack} />
-          <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
-          <Stack.Screen name="Notification" component={NotificationStack} />
+          <Stack.Screen
+            name="Dashboard"
+            options={{
+              headerShown: false,
+            }}
+            component={DashboardStack}
+          />
+          <Stack.Screen
+            name="Search"
+            options={{
+              headerShown: false,
+            }}
+            component={SearchStack}
+          />
+          <Stack.Screen
+            name="Bookmark"
+            options={{
+              headerShown: false,
+            }}
+            component={BookmarkStack}
+          />
+          <Stack.Screen
+            name="ShoppingCart"
+            options={{
+              headerShown: false,
+            }}
+            component={ShoppingCartStack}
+          />
+          <Stack.Screen
+            name="Notification"
+            options={{
+              headerShown: false,
+            }}
+            component={NotificationStack}
+          />
         </Stack.Navigator>
 
         {/* <Tab.Navigator

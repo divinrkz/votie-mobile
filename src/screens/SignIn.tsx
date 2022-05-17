@@ -12,8 +12,22 @@ import {
   View,
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
+import * as SecureStore from 'expo-secure-store';
+import { useEffect } from "react";
+
 
 export default function Login({ navigation }) {
+
+  useEffect(() => {
+    async function getToken() {
+      const token = await SecureStore.getItemAsync('token');
+      if (token) {
+        navigation.navigate('Dashboard');
+      }
+    }
+    getToken()
+  },[])
+
   const { handleChange, handleSubmit, values } = useFormik({
     initialValues: {
       email: "",
@@ -38,15 +52,16 @@ export default function Login({ navigation }) {
         }
       );
 
+      if(!response.ok)
+          Alert.alert("Error", "Invalid email or password");
       const data = await response.json();
 
-      if (!data.ok) {
-        Alert.alert("Error", data.apierror.message);
-      } else {
-        //TODO: (@veritem) finish redirecting and handling tokens
-        // navigation.navigate("Home");
-        console.log({ data });
-      }
+      
+     if(data.token){
+       await SecureStore.setItemAsync('auth_token', JSON.stringify(data.token));
+       await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
+      navigation.navigate("Dashboard");
+     }
     },
   });
 

@@ -12,14 +12,14 @@ import {
 import Icon from "react-native-vector-icons/Feather";
 
 export default function SignUp({ navigation }) {
-  const { handleSubmit, handleChange, handleReset, values } = useFormik({
+  const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       email: "",
       password: "",
       mobile: "",
       fullName: "",
     },
-    onSubmit: async (values) => {
+    onSubmit: async (values, {resetForm}) => {
       if (
         !values.email ||
         !values.password ||
@@ -49,11 +49,11 @@ export default function SignUp({ navigation }) {
 
       const data = await response.json();
 
-      if (!data.ok) {
+      if (data.apierror) {
         Alert.alert("Error", data.apierror.message);
       } else {
         Alert.alert("Success", "You have successfully signed up!");
-        handleReset();
+        resetForm()
         navigation.navigate("SignIn");
       }
     },

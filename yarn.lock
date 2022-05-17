@@ -74,6 +74,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/generator@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/generator@npm:7.17.12"
+  dependencies:
+    "@babel/types": ^7.17.12
+    "@jridgewell/gen-mapping": ^0.3.0
+    jsesc: ^2.5.1
+  checksum: a32c02d70ef054eba5aa58fe601885d6a8d66e2dd7828959887d82e17c026616da056897b1c1993dfd083b4e239457e8e34b1154256a791e7e80f23320f940a3
+  languageName: node
+  linkType: hard
+
 "@babel/helper-annotate-as-pure@npm:^7.16.7":
   version: 7.16.7
   resolution: "@babel/helper-annotate-as-pure@npm:7.16.7"
@@ -346,6 +357,15 @@ __metadata:
   bin:
     parser: ./bin/babel-parser.js
   checksum: a9493d9fb8625e0904a178703866c8ee4d3a6003f0954b08df9f772b54dae109c69376812b74732e0c3e1a7f1d5b30915577a1db12e5e16b0abee083539df574
+  languageName: node
+  linkType: hard
+
+"@babel/parser@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/parser@npm:7.17.12"
+  bin:
+    parser: ./bin/babel-parser.js
+  checksum: 5c6f498040b2941fabdf2158683c482c8336af2d7d4c5be95ac9648993a1e03a22c4d18566897d4009e4ce5756a03f144bb37f8ceac176cc5bba99f4eb8ca33e
   languageName: node
   linkType: hard
 
@@ -1454,6 +1474,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/traverse@npm:^7.7.4":
+  version: 7.17.12
+  resolution: "@babel/traverse@npm:7.17.12"
+  dependencies:
+    "@babel/code-frame": ^7.16.7
+    "@babel/generator": ^7.17.12
+    "@babel/helper-environment-visitor": ^7.16.7
+    "@babel/helper-function-name": ^7.17.9
+    "@babel/helper-hoist-variables": ^7.16.7
+    "@babel/helper-split-export-declaration": ^7.16.7
+    "@babel/parser": ^7.17.12
+    "@babel/types": ^7.17.12
+    debug: ^4.1.0
+    globals: ^11.1.0
+  checksum: 26331fd7cfe43b9b24008bc686398638ba4b550440ac866b095452b95df9a106c306ba712cfaba66daa31bb347850f8a5a214460c1c1921bb57a1a6b7087fbc1
+  languageName: node
+  linkType: hard
+
 "@babel/types@npm:^7.0.0, @babel/types@npm:^7.16.0, @babel/types@npm:^7.16.7, @babel/types@npm:^7.16.8, @babel/types@npm:^7.17.0, @babel/types@npm:^7.17.10, @babel/types@npm:^7.4.4, @babel/types@npm:^7.8.3":
   version: 7.17.10
   resolution: "@babel/types@npm:7.17.10"
@@ -1461,6 +1499,16 @@ __metadata:
     "@babel/helper-validator-identifier": ^7.16.7
     to-fast-properties: ^2.0.0
   checksum: 40cfc3f43a3ab7374df8ee6844793f804c65e7bea0fd1b090886b425106ba26e16e8fa698ae4b2caf2746083fe3e62f03f12997a5982e0d131700f17cbdcfca1
+  languageName: node
+  linkType: hard
+
+"@babel/types@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/types@npm:7.17.12"
+  dependencies:
+    "@babel/helper-validator-identifier": ^7.16.7
+    to-fast-properties: ^2.0.0
+  checksum: 5e522081587a0073a577fd05010ab917dbd2acea7aa06027ec42f90894ed1f8df2f03b9bb0713638153839b56a7be8dcf4b8ab2e55796c730a30ca9f0df1ba5c
   languageName: node
   linkType: hard
 
@@ -1930,6 +1978,17 @@ __metadata:
     "@jridgewell/set-array": ^1.0.0
     "@jridgewell/sourcemap-codec": ^1.4.10
   checksum: 3bcc21fe786de6ffbf35c399a174faab05eb23ce6a03e8769569de28abbf4facc2db36a9ddb0150545ae23a8d35a7cf7237b2aa9e9356a7c626fb4698287d5cc
+  languageName: node
+  linkType: hard
+
+"@jridgewell/gen-mapping@npm:^0.3.0":
+  version: 0.3.1
+  resolution: "@jridgewell/gen-mapping@npm:0.3.1"
+  dependencies:
+    "@jridgewell/set-array": ^1.0.0
+    "@jridgewell/sourcemap-codec": ^1.4.10
+    "@jridgewell/trace-mapping": ^0.3.9
+  checksum: e9e7bb3335dea9e60872089761d4e8e089597360cdb1af90370e9d53b7d67232c1e0a3ab65fbfef4fc785745193fbc56bff9f3a6cab6c6ce3f15e12b4191f86b
   languageName: node
   linkType: hard
 
@@ -4295,6 +4354,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-react-native-globals@npm:^0.1.1":
+  version: 0.1.2
+  resolution: "eslint-plugin-react-native-globals@npm:0.1.2"
+  checksum: ab91e8ecbb51718fb0763f29226b1c2d402251ab2c4730a8bf85f38b805e32d4243da46d07ccdb12cb9dcce9e7514364a1706142cf970f58dcc9a820bcf4b732
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-react-native@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "eslint-plugin-react-native@npm:4.0.0"
+  dependencies:
+    "@babel/traverse": ^7.7.4
+    eslint-plugin-react-native-globals: ^0.1.1
+  peerDependencies:
+    eslint: ^3.17.0 || ^4 || ^5 || ^6 || ^7 || ^8
+  checksum: 69fee2de6bad525b5e747112cd8007861be4ad014b96208f6b7d221eef0bac43b834115e4379d9f719e7aa24a5d41c281bbbd6a76ddfa363f939670a635ab0fa
+  languageName: node
+  linkType: hard
+
 "esprima@npm:^4.0.0, esprima@npm:~4.0.0":
   version: 4.0.1
   resolution: "esprima@npm:4.0.1"
@@ -4484,6 +4562,15 @@ __metadata:
     compare-versions: ^3.4.0
     invariant: ^2.2.4
   checksum: cc7a5efa50cdd193f3240c824276eae2aad4bbae256607529df6f039c9db3cea5bd898002096fb152026abeca33fc46755d3ea68644c7b25dfdb913d9cef383e
+  languageName: node
+  linkType: hard
+
+"expo-secure-store@npm:^11.2.0":
+  version: 11.2.0
+  resolution: "expo-secure-store@npm:11.2.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 1b73f1471cd408e2196e2c1a954f2b013abef6a2065a9f10a353ffd75fd30a4d8e7da87c0306e08bccffa1435894eeec5ba7b6114a1a4624c4392c6b1321bf54
   languageName: node
   linkType: hard
 
@@ -9049,9 +9136,11 @@ __metadata:
     "@types/react-native": ^0.67.7
     "@types/react-native-vector-icons": ^6.4.10
     "@types/react-test-renderer": ^18.0.0
+    eslint-plugin-react-native: ^4.0.0
     expo: ~45.0.0
     expo-app-loading: ~2.0.0
     expo-font: ~10.1.0
+    expo-secure-store: ^11.2.0
     expo-splash-screen: ~0.15.1
     expo-status-bar: ~1.3.0
     formik: ^2.2.9
