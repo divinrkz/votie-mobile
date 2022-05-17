@@ -3,9 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  TouchableOpacity,
-  Icon,
   Image,
 } from "react-native";
 import Colors from "../../../util/colors"
