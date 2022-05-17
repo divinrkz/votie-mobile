@@ -10,8 +10,7 @@ import {
 } from "react-native";
 import Colors from "../../util/colors";
 import { Button } from "react-native-elements";
-
-
+import { ListItem } from "../components/screens/Checkout";
 
 const items = [
   { imageUrl: "", name: "MTN Mobile Money" },
@@ -24,41 +23,52 @@ export default function CheckoutScreen() {
       <View style={styles.summary}>
         <View style={styles.backIconView}>
           <Button
+            buttonStyle={styles.backBtn}
             icon={{
-              name: "left",
-              size: 15,
+              name: "chevron-left",
+              size: 40,
               color: Colors.green,
             }}
-            title="Button with icon object"
+            title=""
           />
         </View>
         <View style={styles.textSummaryView}>
-            <Text style={styles.checkoutText}>
-               Checkout
-            </Text>
-            <View>
-                <Text style={styles.amountText}>Frw 16,000</Text>
-               <Text style={styles.includeVatText}>Including VAT (18%)</Text>
-            </View>
+          <Text style={styles.checkoutText}>Checkout</Text>
+          <View style={styles.amountDescView}>
+            <Text style={styles.amountText}>Frw 16,000</Text>
+            <Text style={styles.includeVatText}>Including VAT (18%)</Text>
+          </View>
         </View>
         <View style={styles.options}>
-          <View style={styles.creditOption}>
+          <View style={styles.creditOptionView}>
             <Text style={styles.creditOptionText}>Credit Card</Text>
           </View>
-          <Text style={styles.momOptionText}>Mobile & Cash</Text>
+          <View style={styles.momoOptionView}>
+            <Text style={styles.momOptionText}>Mobile & Cash</Text>
+          </View>
         </View>
       </View>
 
-      <View></View>
+      <View>
+      <FlatList
+        data={[
+          {key: 'MOMO',name:"MTN Mobile Money",imageUrl:'../../assets/momo.png'},
+          {key: 'AIRTEL',name:"Airtel Money",imageUrl:'../../assets/airtel.png'},
+          {key: 'CASH',name:"Cash",imageUrl:'../../assets/cash.png'}
+        ]}
+        renderItem={({item}) => <ListItem name={item.name} imageUrl={item.imageUrl}/>}
+      />
+      </View>
 
       <View style={styles.proceedView}>
         <Text style={styles.assText}></Text>
-        <TouchableOpacity title="Pay for the order" style={styles.authButton}>
-          <Image
-            source={require("../../assets/fb.png")}
-            style={styles.authImage}
-          />
-          <Text style={styles.authButtonText}>Sign in with Facebook</Text>
+        <TouchableOpacity title="Pay for the order" style={styles.payButton}>
+          {/* <Icon
+            name="shopping-cart"
+            backgroundColor="transparent"
+            color="black"
+          /> */}
+          <Text style={styles.payButtonText}>Pay for the order</Text>
         </TouchableOpacity>
 
         <View style={styles.btmLine}></View>
@@ -66,6 +76,7 @@ export default function CheckoutScreen() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -76,37 +87,64 @@ const styles = StyleSheet.create({
   summary: {
     width: "90%",
     marginRight: "10%",
-    borderRadius: "50",
-    alignItems: "center",
+    borderRadius: 50,
+    backgroundColor: "#FFFF",
   },
-  backIconView:{
+  backIconView: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    backgroundColor: "#FFFFF",
     marginTop: 10,
-    marginBottom:10
+    marginLeft: 10,
+    marginBottom: 10,
   },
-  textSummaryView:{
-    display: "flex",
+  textSummaryView: {
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 40,
+    flexDirection: "row",
+    flexWrap: 'wrap',
+
   },
-  amountText:{
-   fontSize:20,
-   color:Colors.green,
+  amountDescView:{
+    marginLeft: 70
   },
-  includeVatText:{
-       fontSize:8,
-       fontWeight: "light"
+
+  checkoutText:{
+    marginLeft: 10,
+    fontWeight: "bold",
+    fontSize: 25,
+  },
+  amountText: {
+    fontSize: 20,
+    color: Colors.green,
+  },
+  includeVatText: {
+    fontSize: 15,
+    fontWeight: "light",
   },
   options: {
     backgroundColor: Colors.green,
-    borderRadius: "20",
-    marginLeft: "30",
-    marginRight: "30",
+    borderRadius: 20,
+    marginLeft: 30,
+    width: 300,
+    height: 70,
+    marginBottom: -30,
+    marginRight: 30,
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
-  creditOption: {
+  momoOptionView:{
+    backgroundColor:Colors.green,
+    paddingLeft:20,
+    justifyContent: "center",
+    justItems: "center",
+  },
+  creditOptionView: {
+    backgroundColor: "#FFFF",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: "20",
-    padding: "20",
+    borderRadius: 20,
+    padding: 20,
   },
   creditOptionText: {
     fontWeight: "bold",
@@ -121,10 +159,17 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: Colors.green,
     padding: "3%",
-    borderRadius: 5,
+    width: "60%",
+
+    borderRadius: 15,
     marginVertical: 5,
     flexDirection: "row",
     alignItems: "center",
+  },
+  payButtonText: {
+    fontSize: 15,
+    color: "#FFFFFF",
+    fontWeight: "bold",
   },
   proceedView: {
     textAlign: "center",
@@ -140,5 +185,9 @@ const styles = StyleSheet.create({
     width: "200",
     height: "40",
     backgroundColor: "black",
+  },
+  backBtn: {
+    backgroundColor: "white",
+    borderRadius: 10,
   },
 });

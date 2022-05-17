@@ -16,6 +16,7 @@ import {
   NotificationStack,
   SearchStack,
   ShoppingCartStack,
+  CheckoutStack,
 } from "./src/stacks";
 
 // const Stack = createStackNavigator();
@@ -68,6 +69,21 @@ export default function App() {
             tabBarShowLabel: false,
           }}
         >
+          <Tab.Screen
+            name="Checkout"
+            component={CheckoutStack}
+            options={{
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Icon.Button
+                  name="dollar-sign"
+                  backgroundColor="transparent"
+                  color="black"
+                />
+              ),
+            }}
+          />
+
           <Tab.Screen
             name="Search"
             component={SearchStack}

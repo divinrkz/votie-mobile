@@ -155,4 +155,5 @@ export {
   SearchStack,
   BookmarkStack,
   ShoppingCartStack,
+  CheckoutStack
 };
