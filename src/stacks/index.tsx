@@ -6,6 +6,7 @@ import SearchScreen from "../screens/Search";
 import ShoppingCartScreen from "../screens/ShoppingCart";
 import SignInScreen from "../screens/SignIn";
 import SignUpScreen from "../screens/SignUp";
+import CheckoutScreen from "../screens/Checkout";
 
 const Stack = createStackNavigator();
 
@@ -45,6 +46,26 @@ const DashboardStack = ({ navigation }) => {
       <Stack.Screen
         name="Dashboard"
         component={DashboardScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+
+const CheckoutStack = ({ navigation }) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Checkout"
+      screenOptions={{
+        headerStyle: { backgroundColor: "#42f44b" },
+        headerTintColor: "#fff",
+        headerTitleStyle: { fontWeight: "bold" },
+      }}
+    >
+      <Stack.Screen
+        name="Checkout"
+        component={CheckoutScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -134,4 +155,5 @@ export {
   SearchStack,
   BookmarkStack,
   ShoppingCartStack,
+  CheckoutStack
 };

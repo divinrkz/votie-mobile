@@ -17,6 +17,7 @@ import {
   NotificationStack,
   SearchStack,
   ShoppingCartStack,
+  CheckoutStack,
 } from "./src/stacks";
 import SignIn from "./src/screens/SignIn";
 import SignUp from "./src/screens/SignUp";
@@ -89,6 +90,13 @@ export default function App() {
             }}
             component={NotificationStack}
           />
+          
+          <Stack.Screen name="Dashboard" component={DashboardStack} />
+          <Stack.Screen name="Search" component={SearchStack} />
+          <Stack.Screen name="Bookmark" component={BookmarkStack} />
+          <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
+          <Stack.Screen name="Notification" component={NotificationStack} />
+          <Stack.Screen name="Checkout" component={CheckoutStack} />
         </Stack.Navigator>
 
         {/* <Tab.Navigator
@@ -120,6 +128,35 @@ export default function App() {
           }}
         >
           <Tab.Screen
+            name="Checkout"
+            component={CheckoutStack}
+            options={{
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Icon.Button
+                  name="dollar-sign"
+                  backgroundColor="transparent"
+                  color="black"
+                />
+              ),
+            }}
+          />
+
+          <Tab.Screen
+            name="Search"
+            component={SearchStack}
+            options={{
+              headerShown: false,
+              tabBarIcon: ({ color, size }) => (
+                <Icon.Button
+                  name="briefcase"
+                  backgroundColor="transparent"
+                  color="black"
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
             name="DashboardStack"
             component={DashboardStack}
             options={{
@@ -147,20 +184,7 @@ export default function App() {
               ),
             }}
           />
-          <Tab.Screen
-            name="Search"
-            component={SearchStack}
-            options={{
-              headerShown: false,
-              tabBarIcon: ({ color, size }) => (
-                <Icon.Button
-                  name="briefcase"
-                  backgroundColor="transparent"
-                  color="black"
-                />
-              ),
-            }}
-          />
+
           <Tab.Screen
             name="Bookmark"
             component={BookmarkStack}
