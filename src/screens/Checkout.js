@@ -18,7 +18,7 @@ const items = [
   { imageUrl: "", name: "Airtel Money" },
   { imageUrl: "", name: "Cash" },
 ];
-export default function Checkout() {
+export default function CheckoutScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.summary}>
