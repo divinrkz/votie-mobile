@@ -55,11 +55,13 @@ export default function App() {
             component={SignUp}
             options={{ headerShown: false }}
           />
+          
           <Stack.Screen name="Dashboard" component={DashboardStack} />
           <Stack.Screen name="Search" component={SearchStack} />
           <Stack.Screen name="Bookmark" component={BookmarkStack} />
           <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
           <Stack.Screen name="Notification" component={NotificationStack} />
+          <Stack.Screen name="Checkout" component={CheckoutStack} />
         </Stack.Navigator>
 
         {/* <Tab.Navigator
