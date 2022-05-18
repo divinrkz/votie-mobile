@@ -28,7 +28,7 @@ export default function CheckoutScreen() {
                 <View style={styles.textSummaryView}>
                     <View style={styles.checkoutPayOptionView}>
                         <Text style={styles.checkoutText}>Checkout</Text>
-                        <Image source={require('../../assets/visa.png')} style={styles.visaIcon}/>
+                        {/* <Image source={require('../../assets/visa.png')} style={styles.visaIcon}/> */}
                     </View>
                     <View style={styles.amountDescView}>
                         <Text style={styles.amountText}>Frw 16,000</Text>

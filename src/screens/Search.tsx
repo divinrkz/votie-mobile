@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import Colors from '../../util/colors';
+import Colors from '../util/colors';
 
 
 export default function SearchScreen(props) {

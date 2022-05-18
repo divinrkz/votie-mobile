@@ -5,7 +5,7 @@ import {
     View,
     Image,
 } from 'react-native';
-import Colors from '../../../util/colors';
+import Colors from '../../util/colors';
 import { Button } from 'react-native-elements';
 
 
