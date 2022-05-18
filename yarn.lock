@@ -2727,7 +2727,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:^5.15.0":
+"@typescript-eslint/parser@npm:^5.15.0, @typescript-eslint/parser@npm:^5.25.0":
   version: 5.25.0
   resolution: "@typescript-eslint/parser@npm:5.25.0"
   dependencies:
@@ -10421,6 +10421,7 @@ __metadata:
     "@types/react-native": ^0.67.7
     "@types/react-native-vector-icons": ^6.4.10
     "@types/react-test-renderer": ^18.0.0
+    "@typescript-eslint/parser": ^5.25.0
     eslint: ^8.15.0
     eslint-plugin-react: ^7.29.4
     eslint-plugin-react-native: ^4.0.0

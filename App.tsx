@@ -19,12 +19,19 @@ import {
 } from './src/stacks';
 import SignIn from './src/screens/SignIn';
 import SignUp from './src/screens/SignUp';
+import { RootStackParams } from './src/types/Navigation';
 
-const Stack = createStackNavigator();
+
+
 
 // const Tab = createBottomTabNavigator();
 
 export default function App() {
+  
+
+    // silence react native eror on navigation 
+    const Stack: any = createStackNavigator<RootStackParams>();
+
     let [fontsLoaded] = useFonts({
         Roboto_400Regular,
         Roboto_700Bold,
@@ -37,65 +44,67 @@ export default function App() {
     //   }
     // }, [fontsLoaded]);
 
+    const { Navigator, Screen } = Stack;
+
     if (!fontsLoaded) {
         return <SplashScreen />;
     } else {
         return (
             <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen
+                <Navigator initialRouteName="Dashboard">
+                    <Screen
                         name="SignIn"
                         component={SignIn}
                         options={{ headerShown: false }}
                     />
-                    <Stack.Screen
+                    <Screen
                         name="SignUp"
                         component={SignUp}
                         options={{ headerShown: false }}
                     />
-                    <Stack.Screen
+                    <Screen
                         name="Dashboard"
                         options={{
                             headerShown: false,
                         }}
                         component={DashboardStack}
                     />
-                    <Stack.Screen
+                    <Screen
                         name="Search"
                         options={{
                             headerShown: false,
                         }}
                         component={SearchStack}
                     />
-                    <Stack.Screen
+                    <Screen
                         name="Bookmark"
                         options={{
                             headerShown: false,
                         }}
                         component={BookmarkStack}
                     />
-                    <Stack.Screen
+                    <Screen
                         name="ShoppingCart"
                         options={{
                             headerShown: false,
                         }}
                         component={ShoppingCartStack}
                     />
-                    <Stack.Screen
+                    <Screen
                         name="Notification"
                         options={{
                             headerShown: false,
                         }}
                         component={NotificationStack}
                     />
-          
-                    <Stack.Screen name="Dashboard" component={DashboardStack} />
-                    <Stack.Screen name="Search" component={SearchStack} />
-                    <Stack.Screen name="Bookmark" component={BookmarkStack} />
-                    <Stack.Screen name="ShoppingCart" component={ShoppingCartStack} />
-                    <Stack.Screen name="Notification" component={NotificationStack} />
-                    <Stack.Screen name="Checkout" component={CheckoutStack} />
-                </Stack.Navigator>
+
+                    <Screen name="Dashboard" component={DashboardStack} />
+                    <Screen name="Search" component={SearchStack} />
+                    <Screen name="Bookmark" component={BookmarkStack} />
+                    <Screen name="ShoppingCart" component={ShoppingCartStack} />
+                    <Screen name="Notification" component={NotificationStack} />
+                    <Screen name="Checkout" component={CheckoutStack} />
+                </Navigator>
 
                 {/* <Tab.Navigator
           initialRouteName="Dashboard"
