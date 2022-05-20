@@ -1,15 +1,13 @@
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import TextLogo from "../components/TextLogo";
+import React from 'react';
+import { StyleSheet, View, Text } from 'react-native';
 
-export default function SplashScreen() {
-    
-  return (
+export default function DashboardScreen() {
+    return (
         <View style={styles.container}>
-            <TextLogo type="lander"/>
+            <Text>Dashboard Screen</Text>
         </View>
-);
-};
+    );
+}
 
 
 const styles = StyleSheet.create({
