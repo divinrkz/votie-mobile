@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, Image } from 'react-native';
-import { Dimensions } from 'react-native-web';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function PaymentSuccess() {
@@ -13,7 +12,7 @@ export default function PaymentSuccess() {
                 <Text style={styles.centered}>
           Payment success Yayy! {'\n'}
                 </Text>
-                <Text style={[styles.centered, { marginTop: 20, fontWeight: 'normal', color: '#ffff' }]}>
+                <Text style={[styles.centered, { marginTop: 20, fontWeight: 'normal', color: colors.white }]}>
           we will send you order details and invoice in {'\n'}
           your contact no. and registered email
                 </Text>
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
         width: 250
     },
     downloadButtonText: {
-        color: '#fff',
+        color: colors.white,
         fontWeight: 500
     },
     icon: {

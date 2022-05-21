@@ -19,7 +19,7 @@ export default function SignUp({ navigation }) {
             mobile: '',
             fullName: '',
         },
-        onSubmit: async (values, {resetForm}) => {
+        onSubmit: async (values, { resetForm }) => {
             if (
                 !values.email ||
         !values.password ||
@@ -119,7 +119,6 @@ export default function SignUp({ navigation }) {
                     </View>
 
                     <TouchableOpacity
-                        title="sign in"
                         style={styles.button}
                         onPress={() => {
                             handleSubmit();
@@ -138,17 +137,16 @@ export default function SignUp({ navigation }) {
                 <Text style={styles.haveAnAccount}>If you have a PMG account</Text>
 
                 <TouchableOpacity
-                    title="sign in"
                     style={styles.button}
                     onPress={() => {
-                        navigation.navigate('SignIn');
+                        handleSubmit()
                     }}
                 >
                     <Text style={styles.buttonText}>Sign in</Text>
                 </TouchableOpacity>
 
                 <Text style={styles.dontHaveAccount}>
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
                     <Text
                         style={styles.register}
                         onPress={() => {
@@ -175,7 +173,7 @@ const styles = StyleSheet.create({
         shadowRadius: 15,
     },
     buttonText: {
-        color: '#fff',
+        color: colors.white,
         fontFamily: 'Roboto_700Bold',
         fontSize: 15,
         fontWeight: 'bold',
@@ -193,7 +191,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     form: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         height: '100%',

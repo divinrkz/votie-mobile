@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Dimensions } from 'react-native-web';
 import { Rating } from 'react-native-ratings';
 
 export default function Feedback() {
     return (
         <View style={styles.container}>
-            <View style={[styles.mb,{marginTop: '20%'}]}>
+            <View style={[styles.mb,{ marginTop: '20%' }]}>
                 <Text style={styles.centered}>
           Yayy! {'\n'}
           We value all feedback,{'\n'}

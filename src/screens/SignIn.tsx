@@ -14,6 +14,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import * as SecureStore from 'expo-secure-store';
 import { useEffect } from 'react';
+import colors from '../util/colors';
 
 
 export default function Login({ navigation }) {
@@ -56,11 +57,12 @@ export default function Login({ navigation }) {
                 Alert.alert('Error', 'Invalid email or password');
             const data = await response.json();
 
+            console.log(data);
       
             if(data.token){
                 await SecureStore.setItemAsync('auth_token', JSON.stringify(data.token));
                 await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
-                navigation.navigate('Dashboard');
+                navigation.navigate('Home');
             }
         },
     });
@@ -79,7 +81,7 @@ export default function Login({ navigation }) {
                     </View>
 
                     <View style={styles.inputsArea}>
-                        <View style={styles.inputContainer}>
+                        <View>
                             <TextInput
                                 style={styles.input}
                                 value={values.email}
@@ -188,7 +190,7 @@ const styles = StyleSheet.create({
         shadowRadius: 15,
     },
     buttonText: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 15,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -210,7 +212,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     form: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         height: '100%',

@@ -15,9 +15,14 @@ import NotificationScreen from "../../screens/Notification";
 import RestaurantMenu from "../../screens/RestaurantMenu";
 import SearchScreen from "../../screens/Search";
 import ShoppingCartScreen from "../../screens/ShoppingCart";
+import { AuthStack, SearchStack } from "../../stacks";
+import ChooseRestaurant from "../../screens/ChooseRestaurant";
+
 export default function Navigator() {
+    console.log('dsfa')
     return <AppNavigator />;;
 }
+
 function AuthNavigator() {
     const Stack = createStackNavigator();
     return (
@@ -43,7 +48,9 @@ function AuthNavigator() {
         </Stack.Navigator>
     );
 }
+
 const Tabs = createBottomTabNavigator();
+
 function AppNavigator() {
     return (
         <Tabs.Navigator
@@ -120,7 +127,7 @@ function AppNavigator() {
                     ),
                 }}
                 name="Scan"
-                component={RestaurantMenu}
+                component={SearchStack}
             />
             <Tabs.Screen
                 options={{
@@ -133,8 +140,9 @@ function AppNavigator() {
                     ),
                 }}
                 name="Clock"
-                component={SearchScreen}
+                component={SearchStack}
             />
+ 
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
