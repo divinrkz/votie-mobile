@@ -43,11 +43,9 @@ export default function App() {
   if (!fontsLoaded) {
     return <SplashScreen />;
   } else {
-    return (
-   
+    return ( 
       <NavigationContainer>
           <Navigator/>
-        
       </NavigationContainer>
     );
   }
