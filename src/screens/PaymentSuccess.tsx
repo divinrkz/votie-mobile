@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, Image } from 'react-native';
-import { Dimensions } from 'react-native-web';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function PaymentSuccess() {

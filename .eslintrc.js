@@ -26,7 +26,8 @@ module.exports = {
     },
     'plugins': [
         'react',
-        'react-native'
+        'react-native',
+        'unused-imports'
     ],
     'parser': '@typescript-eslint/parser',
     'rules': {
@@ -45,6 +46,12 @@ module.exports = {
         'semi': [
             'error',
             'always'
+        ],
+        'no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+            'warn',
+            { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' }
         ],
         'react/react-in-jsx-scope': 'off',
         'react-native/no-unused-styles': 'error',

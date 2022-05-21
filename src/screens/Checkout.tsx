@@ -3,7 +3,6 @@ import {
     StyleSheet,
     Text,
     View,
-    Image,
     FlatList,
 } from 'react-native';
 import Colors from '../util/colors';
