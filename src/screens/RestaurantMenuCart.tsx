@@ -168,7 +168,7 @@ export default function RestaurantMenuCart({ navigation, route }) {
                             marginBottom: 10,
                         }}
                     >
-                        <Text style={{ color: '#fff', textAlign: 'center' }}>
+                        <Text style={{ color: colors.white, textAlign: 'center' }}>
               Proceed to checkout
                         </Text>
                     </View>
@@ -180,7 +180,7 @@ export default function RestaurantMenuCart({ navigation, route }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         minHeight: (height * 90) / 100,
         padding: 10,
         width,

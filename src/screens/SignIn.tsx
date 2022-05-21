@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         shadowRadius: 15,
     },
     buttonText: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 15,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     form: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.white,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         height: '100%',

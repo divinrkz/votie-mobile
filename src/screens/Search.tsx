@@ -16,9 +16,9 @@ export default function SearchScreen(props) {
                 round
                 iconColor={Colors.default}
                 leftIconContainerStyle={{ color: Colors.default, fontSize: 100 }}
-                inputContainerStyle={{ backgroundColor: '#FFFFFF' }}
+                inputContainerStyle={{ backgroundColor: colors.white }}
                 containerStyle={{ backgroundColor: Colors.default, border: 0 }}
-                inputStyle={{ backgroundColor: '#FFFFFF' }}
+                inputStyle={{ backgroundColor: colors.white }}
                 placeholder="Search for your preferred restaurant"
                 value={text}
             />

@@ -53,12 +53,15 @@ module.exports = {
             'warn',
             { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' }
         ],
+        'object-curly-spacing': ['error', 'always'],
         'react/react-in-jsx-scope': 'off',
         'react-native/no-unused-styles': 'error',
         'react-native/split-platform-components': 2,
         'react-native/no-inline-styles': 2,
         'react-native/no-color-literals': 2,
+        'react-native/sort-styles': ['error', 'desc', { 'ignoreClassNames': true, 'ignoreStyleProperties': true }],
         'react-native/no-raw-text': 0,
+        ' react-native/no-color-literals': 'off',
         'react/jsx-filename-extension': [
             2,
             {

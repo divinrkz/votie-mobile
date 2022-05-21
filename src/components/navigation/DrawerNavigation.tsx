@@ -13,7 +13,7 @@ export default function DrawerNavigation(props) {
                 color: 'white',
                 itemStyle: { marginVertical: 5, color: 'white' },
                 labelStyle: {
-                    color: '#fff',
+                    color: colors.white,
                 },
             }}
             screenOptions={{ headerShown: false }}

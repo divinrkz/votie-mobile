@@ -8,6 +8,7 @@ import {
 import Colors from '../util/colors';
 import { Button } from 'react-native-elements';
 import { ListItem } from '../components/screens/Checkout';
+import colors from '../util/colors';
 
 export default function CheckoutScreen() {
     return (
@@ -70,7 +71,7 @@ export default function CheckoutScreen() {
                         icon={{
                             name: 'lock',
                             size: 30,
-                            color: '#FFFF',
+                            color: colors.white,
                         }}
                     >
                         <Text style={styles.payButtonText}>Pay for the order</Text>
@@ -96,11 +97,11 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     backBtn: {
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         borderRadius: 10,
     },
     backIconView: {
-        backgroundColor: '#FFFFF',
+        backgroundColor: colors.white,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         marginBottom: 10,
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
         width: 400,
     },
     btmLine: {
-        backgroundColor: 'black',
+        backgroundColor: colors.black,
         borderRadius: 10,
         fontWeight: 'bold',
         height: 7,
@@ -140,21 +141,21 @@ const styles = StyleSheet.create({
     },
     creditOptionView: {
         alignItems: 'center',
-        backgroundColor: '#FFFF',
+        backgroundColor: colors.white,
         borderRadius: 20,
         justifyContent: 'center',
         padding: 20,
     },
     includeVatText: {
         fontSize: 15,
-        fontWeight: 'light',
+        fontWeight: '300',
     },
     listView: {
         marginTop: 60,
         paddingLeft: 30,
     },
     momOptionText: {
-        color: '#FFFFFF',
+        color: colors.white,
         fontSize: 15,
         fontWeight: 'bold',
     },
@@ -188,7 +189,7 @@ const styles = StyleSheet.create({
         width: 350,
     },
     payButtonText: {
-        color: '#FFFFFF',
+        color: colors.white,
         fontSize: 15,
         fontWeight: 'bold',
     },
@@ -197,7 +198,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     summary: {
-        backgroundColor: '#FFFF',
+        backgroundColor: colors.white,
         borderRadius: 50,
         borderWidth: 0.5,
         marginRight: '10%',
@@ -212,10 +213,5 @@ const styles = StyleSheet.create({
         paddingBottom: 40,
         paddingTop: 10,
     },
-    visaIcon:{
-        height: 20,
-        marginLeft:5,
-        marginTop: 12,
-        width: 30
-    },
+   
 });

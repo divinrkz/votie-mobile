@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     imageText: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 25,
         marginLeft: 10,
     },
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
         width: (width * 60) / 100,
     },
     menuListItemText: {
-        color: '#ffffff',
+        color: colors.white,
         fontSize: 20,
     },
     options: {
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         height: 80,
     },
     topLayerText: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 20,
         marginTop: 10,
         textAlign: 'center',

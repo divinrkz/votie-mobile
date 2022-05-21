@@ -9,8 +9,10 @@ import SignUpScreen from '../screens/SignUp';
 import CheckoutScreen from '../screens/Checkout';
 import RestaurantMenu from '../screens/RestaurantMenu';
 import RestaurantMenuCart from '../screens/RestaurantMenuCart';
+import { RootStackParams } from '../types/Navigation';
+import colors from '../util/colors';
 
-const Stack = createStackNavigator();
+const Stack: any = createStackNavigator<RootStackParams>();
 
 const AuthStack = ({ navigation }) => {
     return (
@@ -18,7 +20,7 @@ const AuthStack = ({ navigation }) => {
             initialRouteName="SignUp"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
@@ -41,7 +43,7 @@ const DashboardStack = ({ navigation }) => {
             initialRouteName="Dashboard"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
@@ -60,7 +62,7 @@ const CheckoutStack = ({ navigation }) => {
             initialRouteName="Checkout"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
@@ -80,7 +82,7 @@ const NotificationStack = ({ navigation }) => {
             initialRouteName="Notification"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
@@ -99,7 +101,7 @@ const SearchStack = ({ navigation }) => {
             initialRouteName="RestaurantMenu"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
@@ -128,7 +130,7 @@ const BookmarkStack = ({ navigation }) => {
             initialRouteName="Bookmark"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
@@ -147,7 +149,7 @@ const ShoppingCartStack = ({ navigation }) => {
             initialRouteName="ShoppingCart"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: '#fff',
+                headerTintColor: colors.white,
                 headerTitleStyle: { fontWeight: 'bold' },
             }}
         >
