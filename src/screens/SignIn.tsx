@@ -56,11 +56,12 @@ export default function Login({ navigation }) {
                 Alert.alert('Error', 'Invalid email or password');
             const data = await response.json();
 
+            console.log(data);
       
             if(data.token){
                 await SecureStore.setItemAsync('auth_token', JSON.stringify(data.token));
                 await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
-                navigation.navigate('Dashboard');
+                navigation.navigate('Home');
             }
         },
     });

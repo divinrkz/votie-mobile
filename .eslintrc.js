@@ -46,6 +46,7 @@ module.exports = {
             'error',
             'always'
         ],
+        'react/react-in-jsx-scope': 'off',
         'react-native/no-unused-styles': 'error',
         'react-native/split-platform-components': 2,
         'react-native/no-inline-styles': 2,

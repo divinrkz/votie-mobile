@@ -15,10 +15,10 @@ export default function TextLogo({size='lg', type='lander'}) {
 
 const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#F7941D',
         // flex: 1,
         height: '100%',
         width: '100%',
-        backgroundColor: '#F7941D',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'

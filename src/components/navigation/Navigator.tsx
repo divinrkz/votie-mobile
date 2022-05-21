@@ -1,31 +1,31 @@
-import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
-import { View, Text, TouchableOpacity } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
+import { View, TouchableOpacity } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
     createStackNavigator,
     CardStyleInterpolators,
-} from "@react-navigation/stack";
+} from '@react-navigation/stack';
 
-import { useContext } from "react";
-import SplashScreen from "../../screens/Splash";
-import Login from "../../screens/SignIn";
-import SignUp from "../../screens/SignUp";
-import DashboardScreen from "../../screens/Dashboard";
-import NotificationScreen from "../../screens/Notification";
-import RestaurantMenu from "../../screens/RestaurantMenu";
-import SearchScreen from "../../screens/Search";
-import ShoppingCartScreen from "../../screens/ShoppingCart";
-export default function Navigator() {
-    return <AppNavigator />;;
-}
+import {  useEffect, useState } from 'react';
+import SplashScreen from '../../screens/Splash';
+import Login from '../../screens/SignIn';
+import SignUp from '../../screens/SignUp';
+import DashboardScreen from '../../screens/Dashboard';
+import NotificationScreen from '../../screens/Notification';
+import RestaurantMenu from '../../screens/RestaurantMenu';
+import SearchScreen from '../../screens/Search';
+import ShoppingCartScreen from '../../screens/ShoppingCart';
+import * as SecureStore from 'expo-secure-store';
+
+
 function AuthNavigator() {
-    const Stack = createStackNavigator();
+    const Stack: any = createStackNavigator();
     return (
         <Stack.Navigator
             initialRouteName="Login"
             screenOptions={{
                 gestureEnabled: true,
-                gestureDirection: "horizontal",
+                gestureDirection: 'horizontal',
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             }}
         >
@@ -43,25 +43,44 @@ function AuthNavigator() {
         </Stack.Navigator>
     );
 }
-const Tabs = createBottomTabNavigator();
-function AppNavigator() {
+
+const Tabs: any = createBottomTabNavigator();
+
+export default function AppNavigator() {
+
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    useEffect(() => {
+        async function getToken() {
+            const token = await SecureStore.getItemAsync('token');
+            if (token) {
+                setIsAuthenticated(true);
+            }
+        }
+        getToken();
+    },[]);
+
+
+    if(!isAuthenticated)
+        return <AuthNavigator/>;
+
     return (
         <Tabs.Navigator
             initialRouteName="Search"
             screenOptions={{
                 tabBarHideOnKeyboard: true,
                 headerShown: false,
-                tabBarInactiveTintColor: "black",
+                tabBarInactiveTintColor: 'black',
                 tabBarStyle: {
-                    backgroundColor: "white",
+                    backgroundColor: 'white',
                     height: 80,
                     paddingBottom: 10,
                     padding: 30,
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30,
                     marginHorizontal: 5,
-                    position: "absolute",
-                    borderColor: "white",
+                    position: 'absolute',
+                    borderColor: 'white',
                     elevation: 10,
                 },
                 tabBarButton: (props) => {
@@ -74,8 +93,8 @@ function AppNavigator() {
                                     borderRadius: 10,
                                     backgroundColor: props.accessibilityState
                                         .selected
-                                        ? "#F6E3DB"
-                                        : "white",
+                                        ? '#F6E3DB'
+                                        : 'white',
                                 }}
                             >
                                 <TouchableOpacity {...props} />
@@ -84,7 +103,7 @@ function AppNavigator() {
                     );
                 },
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: "#F7941D",
+                tabBarActiveTintColor: '#F7941D',
             }}
         >
             <Tabs.Screen
