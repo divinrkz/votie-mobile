@@ -9,6 +9,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../util/colors';
 
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;
@@ -46,7 +47,7 @@ export default function RestaurantMenu({ navigation }) {
                         ></Image>
                         <Text style={styles.imageText}>N8</Text>
                     </View>
-                    <Text style={[styles.topLayerText, { fontWeight: '900' }]}>
+                    <Text style={styles.topLayerText}>
             Ordered
                     </Text>
                 </View>
@@ -84,14 +85,14 @@ export default function RestaurantMenu({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        backgroundColor: 'rgb(0,0,0)',
+        backgroundColor: colors.black,
         display: 'flex',
         height,
         justifyContent: 'center',
         width,
     },
     headerText: {
-        color: '#F7941D',
+        color: colors.default,
         fontSize: 25,
         fontWeight: '900',
         textAlign: 'center',
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     subHeaderText: {
-        color: '#F7941D',
+        color: colors.default,
         fontSize: 26,
         fontWeight: '900',
         textAlign: 'center',
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     verticalLine: {
-        backgroundColor: 'rgb(102,62,12)',
+        backgroundColor: colors.border,
         width: 2,
     },
 });

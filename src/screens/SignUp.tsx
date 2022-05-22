@@ -10,6 +10,7 @@ import {
     View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import colors from '../util/colors';
 
 export default function SignUp({ navigation }) {
     const { handleSubmit, handleChange, values } = useFormik({
@@ -139,23 +140,23 @@ export default function SignUp({ navigation }) {
                 <TouchableOpacity
                     style={styles.button}
                     onPress={() => {
-                        navigation.navigate('SignIn');
+                        navigation.navigate('Login');
                     }}
                 >
                     <Text style={styles.buttonText}>Sign in</Text>
                 </TouchableOpacity>
 
-                <Text style={styles.dontHaveAccount}>
+                {/* <Text style={styles.dontHaveAccount}>
           Don&apos;t have an account?{' '}
                     <Text
                         style={styles.register}
                         onPress={() => {
-                            navigation.navigate('SignUp');
+                            navigation.navigate('Register');
                         }}
                     >
             Register
                     </Text>
-                </Text>
+                </Text> */}
             </View>
         </SafeAreaView>
     );
@@ -163,7 +164,7 @@ export default function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#F7941D',
+        backgroundColor: colors.default,
         borderRadius: 5,
         elevation: 6,
         padding: '5%',

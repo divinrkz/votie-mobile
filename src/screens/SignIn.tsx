@@ -14,6 +14,7 @@ import {
 import Icon from 'react-native-vector-icons/Feather';
 import * as SecureStore from 'expo-secure-store';
 import { useEffect } from 'react';
+import colors from '../util/colors';
 
 
 export default function Login({ navigation }) {
@@ -139,11 +140,12 @@ export default function Login({ navigation }) {
                     <View>
                         <Text style={styles.forgotPassword}>Forgot password?</Text>
                         <Text style={styles.dontHaveAccount}>
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
                             <Text
                                 style={styles.formTextSignUp}
                                 onPress={() => {
-                                    navigation.navigate('SignUp');
+                                    console.log('here');
+                                    navigation.navigate('Register');
                                 }}
                             >
                 Sign up
@@ -159,7 +161,7 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     authButton: {
         alignItems: 'center',
-        borderColor: '#9098b2',
+        borderColor: colors.border,
         borderRadius: 5,
         borderWidth: 1,
         flexDirection: 'row',
@@ -195,7 +197,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     container: {
-        backgroundColor: '#F7941D',
+        backgroundColor: colors.default,
         flex: 1,
         height: '100%',
         width: '100%',
