@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     horizontalLine: {
-        borderBottomColor: '#9098b2',
+        borderBottomColor: colors.border,
         borderBottomWidth: 1,
         flex: 1,
         height: 1,
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
         top: 18,
     },
     input: {
-        borderColor: '#9098b2',
+        borderColor: colors.border,
         borderRadius: 5,
         borderWidth: 1,
         marginBottom: 20,
@@ -262,19 +262,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     logoTextM: {
-        color: '#F7941D',
+        color: colors.default,
         fontFamily: 'Roboto_700Bold',
         fontSize: 40,
         fontWeight: 'bold',
         marginLeft: 3,
     },
     or: {
-        color: '#9098b2',
+        color: colors.border,
         textAlign: 'center',
         width: 50,
     },
-    register: {
-        color: '#F7941D',
-        fontWeight: 'bold',
-    },
+
 });

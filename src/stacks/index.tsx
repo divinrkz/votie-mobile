@@ -11,6 +11,7 @@ import RestaurantMenu from '../screens/RestaurantMenu';
 import RestaurantMenuCart from '../screens/RestaurantMenuCart';
 import { RootStackParams } from '../types/Navigation';
 import colors from '../util/colors';
+import ChooseRestaurant from '../screens/ChooseRestaurant';
 
 const Stack: any = createStackNavigator<RootStackParams>();
 
@@ -76,7 +77,6 @@ const CheckoutStack = ({ navigation }) => {
 };
 
 const NotificationStack = ({ navigation }) => {
-    console.log('here');
     return (
         <Stack.Navigator
             initialRouteName="Notification"
@@ -98,7 +98,7 @@ const NotificationStack = ({ navigation }) => {
 const SearchStack = ({ navigation }) => {
     return (
         <Stack.Navigator
-            initialRouteName="RestaurantMenu"
+            initialRouteName="Search"
             screenOptions={{
                 headerStyle: { backgroundColor: '#42f44b' },
                 headerTintColor: colors.white,
@@ -108,6 +108,11 @@ const SearchStack = ({ navigation }) => {
             <Stack.Screen
                 name="Search"
                 component={SearchScreen}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="ChooseRestaurant"
+                component={ChooseRestaurant}
                 options={{ headerShown: false }}
             />
             <Stack.Screen

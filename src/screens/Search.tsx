@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { SearchBar } from 'react-native-elements';
+import colors from '../util/colors';
 import Colors from '../util/colors';
 
 
 export default function SearchScreen(props) {
     const [text, onChangeText] = React.useState('');
 
+    const searchSubmit = () => {
+        props.navigation.navigate('ChooseRestaurant', { search: text });
+    };
     return (
         <View style={styles.container}>
     
@@ -15,6 +19,7 @@ export default function SearchScreen(props) {
                 onChangeText={onChangeText}
                 round
                 iconColor={Colors.default}
+                onSubmitEditing={searchSubmit}
                 leftIconContainerStyle={{ color: Colors.default, fontSize: 100 }}
                 inputContainerStyle={{ backgroundColor: colors.white }}
                 containerStyle={{ backgroundColor: Colors.default, border: 0 }}

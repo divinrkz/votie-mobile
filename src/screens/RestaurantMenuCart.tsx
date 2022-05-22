@@ -9,6 +9,7 @@ import {
     TouchableWithoutFeedback,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../util/colors';
 
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;

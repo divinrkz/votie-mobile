@@ -6,17 +6,21 @@ import {
     CardStyleInterpolators,
 } from '@react-navigation/stack';
 
-import {  useEffect, useState } from 'react';
 import SplashScreen from '../../screens/Splash';
 import Login from '../../screens/SignIn';
 import SignUp from '../../screens/SignUp';
 import DashboardScreen from '../../screens/Dashboard';
 import NotificationScreen from '../../screens/Notification';
-import RestaurantMenu from '../../screens/RestaurantMenu';
-import SearchScreen from '../../screens/Search';
 import ShoppingCartScreen from '../../screens/ShoppingCart';
+import { SearchStack } from '../../stacks';
+import { useEffect, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
 
+
+export default function Navigator() {
+    console.log('dsfa');
+    return <AppNavigator />;
+}
 
 function AuthNavigator() {
     const Stack: any = createStackNavigator();
@@ -46,7 +50,7 @@ function AuthNavigator() {
 
 const Tabs: any = createBottomTabNavigator();
 
-export default function AppNavigator() {
+function AppNavigator() {
 
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -139,7 +143,7 @@ export default function AppNavigator() {
                     ),
                 }}
                 name="Scan"
-                component={RestaurantMenu}
+                component={SearchStack}
             />
             <Tabs.Screen
                 options={{
@@ -152,8 +156,9 @@ export default function AppNavigator() {
                     ),
                 }}
                 name="Clock"
-                component={SearchScreen}
+                component={SearchStack}
             />
+ 
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ color }) => (

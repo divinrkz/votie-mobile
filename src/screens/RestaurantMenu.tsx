@@ -14,13 +14,14 @@ import colors from '../util/colors';
 let height = Dimensions.get('window').height;
 let width = Dimensions.get('window').width;
 
-export default function RestaurantMenu({ navigation }) {
+export default function RestaurantMenu({ navigation, route }) {
+    const { restaurant } = route.params;
     const [menuOptions, setMenuOptions] = React.useState<Array<string>>([]);
 
     //useEffect hook to run code on component mount
     useEffect(() => {
     // fetch menu options from the server
-    // fetch("http://localhost:3000/menu")
+    // fetch("http://localhost:3000/menu/restaurant/" + restaurant.id)
     //   .then((res) => res.json())
     //   .then((data) => {
     //     setMenuOptions(data);
@@ -37,7 +38,9 @@ export default function RestaurantMenu({ navigation }) {
     return (
         <View style={styles.container}>
             <StatusBar style="light" />
-            <Text style={styles.headerText}>Choose Kigali</Text>
+            <Text style={styles.headerText}>
+                {restaurant?.name || 'Choose Kigali'}
+            </Text>
             <View style={styles.topLayer}>
                 <View style={styles.topLayerItem}>
                     <View style={styles.imageContainer}>
@@ -47,7 +50,7 @@ export default function RestaurantMenu({ navigation }) {
                         ></Image>
                         <Text style={styles.imageText}>N8</Text>
                     </View>
-                    <Text style={styles.topLayerText}>
+                    <Text style={[styles.topLayerText, { fontWeight: '900' }]}>
             Ordered
                     </Text>
                 </View>

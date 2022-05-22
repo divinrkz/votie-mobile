@@ -57,7 +57,6 @@ export default function Login({ navigation }) {
                 Alert.alert('Error', 'Invalid email or password');
             const data = await response.json();
 
-            console.log(data);
       
             if(data.token){
                 await SecureStore.setItemAsync('auth_token', JSON.stringify(data.token));
@@ -81,7 +80,7 @@ export default function Login({ navigation }) {
                     </View>
 
                     <View style={styles.inputsArea}>
-                        <View style={styles.inputContainer}>
+                        <View>
                             <TextInput
                                 style={styles.input}
                                 value={values.email}
