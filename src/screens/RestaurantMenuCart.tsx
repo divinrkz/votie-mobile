@@ -51,7 +51,7 @@ export default function RestaurantMenuCart({ navigation, route }) {
   const decrement = (id: number) => {
     let newProducts = products.map((product) => {
       if (product.id === id) {
-        product.amount--;
+        if (product.amount > 0) product.amount--;
       }
       return product;
     });

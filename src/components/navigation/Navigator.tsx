@@ -16,7 +16,6 @@ import { SearchStack } from '../../stacks';
 import { useEffect, useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
 
-
 export default function Navigator() {
     return <AppNavigator />;
 }
@@ -50,7 +49,6 @@ function AuthNavigator() {
 const Tabs: any = createBottomTabNavigator();
 
 function AppNavigator() {
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     useEffect(() => {
@@ -63,10 +61,7 @@ function AppNavigator() {
         getToken();
     }, []);
 
-
-
-    if (!isAuthenticated)
-        return <AuthNavigator />;
+    if (!isAuthenticated) return <AuthNavigator />;
 
     return (
         <Tabs.Navigator
@@ -95,8 +90,7 @@ function AppNavigator() {
                                     minWidth: 50,
                                     minHeight: 50,
                                     borderRadius: 10,
-                                    backgroundColor: props.accessibilityState
-                                        .selected
+                                    backgroundColor: props.accessibilityState.selected
                                         ? '#F6E3DB'
                                         : 'white',
                                 }}
@@ -135,11 +129,7 @@ function AppNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons
-                            name="line-scan"
-                            size={24}
-                            color={color}
-                        />
+                        <MaterialCommunityIcons name="line-scan" size={24} color={color} />
                     ),
                 }}
                 name="Scan"
@@ -162,11 +152,7 @@ function AppNavigator() {
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <AntDesign
-                            name="shoppingcart"
-                            size={24}
-                            color={color}
-                        />
+                        <AntDesign name="shoppingcart" size={24} color={color} />
                     ),
                 }}
                 name="Cart"

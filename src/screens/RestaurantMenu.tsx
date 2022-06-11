@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,38 +10,50 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import colors from "../util/colors";
+import * as SecureStore from "expo-secure-store";
 
 let height = Dimensions.get("window").height;
 let width = Dimensions.get("window").width;
 
-const token = "";
-
 export default function RestaurantMenu({ navigation, route }) {
+  const [token, settoken] = useState("");
+
+  useEffect(() => {
+    async function getToken() {
+      const tokenFromSecureStore = await SecureStore.getItemAsync("token");
+      if (tokenFromSecureStore) {
+        settoken(JSON.parse(tokenFromSecureStore).accessToken);
+      }
+    }
+    getToken();
+  }, []);
+
   const { restaurant } = route?.params || {};
   const [menuOptions, setMenuOptions] = React.useState<Array<any>>([]);
 
   //useEffect hook to run code on component mount
   useEffect(() => {
     // fetch menu options from the server
-    fetch(
-      `http://196.223.240.154:8099/supapp/api/menu-categories/listAll/service-provider/${
-        restaurant?.id || 1
-      }`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.error && !data.apierror) {
-          setMenuOptions(data);
-        } else console.log(data);
-      });
-    //   setMenuOptions(["Appetizer", "Starter", "Main", "Dessert", "Drink"]);
-  }, []);
+    if (token) {
+      fetch(
+        `http://196.223.240.154:8099/supapp/api/menu-categories/listAll/service-provider/${
+          restaurant?.id || 1
+        }`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.error && !data.apierror) {
+            setMenuOptions(data);
+          } else console.log(data);
+        });
+    }
+  }, [token]);
 
   const selectMenu = (menu: Object) => {
     // navigate to the next screen
