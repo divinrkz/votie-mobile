@@ -55,7 +55,6 @@ function AppNavigator() {
 
     useEffect(() => {
         async function getToken() {
-            await SecureStore.deleteItemAsync('token');
             const token = await SecureStore.getItemAsync('token');
             if (token) {
                 setIsAuthenticated(true);
