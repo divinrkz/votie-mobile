@@ -3,11 +3,11 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SearchScreen from '../../screens/Search';
 import { Text } from 'react-native';
+import colors from '../../util/colors';
 
 const Tab: any = createBottomTabNavigator();
 
 export default function TabNavigation() {
-  
 
     return (
         <Tab.Navigator
@@ -29,7 +29,7 @@ export default function TabNavigation() {
                 component={SearchScreen}
                 options={{
                     tabBarLabel: () => (
-                        <Text>dsjakf</Text>
+                        <Text>More text here</Text>
                     ),
                 }}
             />

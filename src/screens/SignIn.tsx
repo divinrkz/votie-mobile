@@ -23,11 +23,11 @@ export default function Login({ navigation }) {
         async function getToken() {
             const token = await SecureStore.getItemAsync('token');
             if (token) {
-                navigation.navigate('Dashboard');
+                navigation.navigate('Search');
             }
         }
         getToken();
-    },[]);
+    }, []);
 
     const { handleChange, handleSubmit, values } = useFormik({
         initialValues: {
@@ -53,15 +53,18 @@ export default function Login({ navigation }) {
                 }
             );
 
-            if(!response.ok)
+            if (!response.ok)
                 Alert.alert('Error', 'Invalid email or password');
             const data = await response.json();
 
-      
-            if(data.token){
-                await SecureStore.setItemAsync('auth_token', JSON.stringify(data.token));
-                await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
-                navigation.navigate('Home');
+            if (data.token) {
+                try {
+                    await SecureStore.setItemAsync('token', JSON.stringify(data.token));
+                    await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
+                    navigation.navigate('Home');
+                } catch (error) {
+                    Alert.alert('Error', 'Something went wrong');
+                }
             }
         },
     });
@@ -118,7 +121,7 @@ export default function Login({ navigation }) {
                     </View>
 
                     <View style={styles.authProvider}>
-                        <TouchableOpacity  style={styles.authButton}>
+                        <TouchableOpacity style={styles.authButton}>
                             <Image
                                 source={require('../../assets/google.png')}
                                 style={styles.authImage}
@@ -127,7 +130,7 @@ export default function Login({ navigation }) {
                             <Text style={styles.authButtonText}>Sign in with Google</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity  style={styles.authButton}>
+                        <TouchableOpacity style={styles.authButton}>
                             <Image
                                 source={require('../../assets/fb.png')}
                                 style={styles.authImage}
@@ -139,15 +142,14 @@ export default function Login({ navigation }) {
                     <View>
                         <Text style={styles.forgotPassword}>Forgot password?</Text>
                         <Text style={styles.dontHaveAccount}>
-              Don&apos;t have an account?{' '}
+                            Don&apos;t have an account?{' '}
                             <Text
                                 style={styles.formTextSignUp}
                                 onPress={() => {
-                                    console.log('here');
                                     navigation.navigate('Register');
                                 }}
                             >
-                Sign up
+                                Sign up
                             </Text>
                         </Text>
                     </View>

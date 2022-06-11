@@ -18,7 +18,6 @@ import * as SecureStore from 'expo-secure-store';
 
 
 export default function Navigator() {
-    console.log('dsfa');
     return <AppNavigator />;
 }
 
@@ -56,17 +55,19 @@ function AppNavigator() {
 
     useEffect(() => {
         async function getToken() {
+            await SecureStore.deleteItemAsync('token');
             const token = await SecureStore.getItemAsync('token');
             if (token) {
                 setIsAuthenticated(true);
             }
         }
         getToken();
-    },[]);
+    }, []);
 
 
-    if(!isAuthenticated)
-        return <AuthNavigator/>;
+
+    if (!isAuthenticated)
+        return <AuthNavigator />;
 
     return (
         <Tabs.Navigator
@@ -158,7 +159,7 @@ function AppNavigator() {
                 name="Clock"
                 component={SearchStack}
             />
- 
+
             <Tabs.Screen
                 options={{
                     tabBarIcon: ({ color }) => (
