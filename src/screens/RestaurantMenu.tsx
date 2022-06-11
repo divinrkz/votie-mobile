@@ -20,9 +20,9 @@ export default function RestaurantMenu({ navigation, route }) {
 
   useEffect(() => {
     async function getToken() {
-      const tokenFromSecureStore = await SecureStore.getItemAsync("token");
+      const tokenFromSecureStore = await SecureStore.getItemAsync("auth_token");
       if (tokenFromSecureStore) {
-        settoken(tokenFromSecureStore);
+        settoken(JSON.parse(tokenFromSecureStore).accessToken);
       }
     }
     getToken();
@@ -34,25 +34,26 @@ export default function RestaurantMenu({ navigation, route }) {
   //useEffect hook to run code on component mount
   useEffect(() => {
     // fetch menu options from the server
-    fetch(
-      `http://196.223.240.154:8099/supapp/api/menu-categories/listAll/service-provider/${
-        restaurant?.id || 1
-      }`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.error && !data.apierror) {
-          setMenuOptions(data);
-        } else console.log(data);
-      });
-    //   setMenuOptions(["Appetizer", "Starter", "Main", "Dessert", "Drink"]);
-  }, []);
+    if (token) {
+      fetch(
+        `http://196.223.240.154:8099/supapp/api/menu-categories/listAll/service-provider/${
+          restaurant?.id || 1
+        }`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.error && !data.apierror) {
+            setMenuOptions(data);
+          } else console.log(data);
+        });
+    }
+  }, [token]);
 
   const selectMenu = (menu: Object) => {
     // navigate to the next screen
