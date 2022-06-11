@@ -20,7 +20,7 @@ export default function RestaurantMenu({ navigation, route }) {
 
   useEffect(() => {
     async function getToken() {
-      const tokenFromSecureStore = await SecureStore.getItemAsync("auth_token");
+      const tokenFromSecureStore = await SecureStore.getItemAsync("token");
       if (tokenFromSecureStore) {
         settoken(JSON.parse(tokenFromSecureStore).accessToken);
       }

@@ -17,7 +17,6 @@ import { useEffect, useState } from "react";
 import * as SecureStore from "expo-secure-store";
 
 export default function Navigator() {
-  console.log("dsfa");
   return <AppNavigator />;
 }
 
@@ -54,7 +53,8 @@ function AppNavigator() {
 
   useEffect(() => {
     async function getToken() {
-      const token = await SecureStore.getItemAsync("auth_token");
+      await SecureStore.deleteItemAsync("token");
+      const token = await SecureStore.getItemAsync("token");
       if (token) {
         setIsAuthenticated(true);
       }
