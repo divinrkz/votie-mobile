@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,13 +10,24 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import colors from "../util/colors";
+import * as SecureStore from "expo-secure-store";
 
 let height = Dimensions.get("window").height;
 let width = Dimensions.get("window").width;
 
-const token = "";
-
 export default function RestaurantMenu({ navigation, route }) {
+  const [token, settoken] = useState("");
+
+  useEffect(() => {
+    async function getToken() {
+      const tokenFromSecureStore = await SecureStore.getItemAsync("token");
+      if (tokenFromSecureStore) {
+        settoken(tokenFromSecureStore);
+      }
+    }
+    getToken();
+  }, []);
+
   const { restaurant } = route?.params || {};
   const [menuOptions, setMenuOptions] = React.useState<Array<any>>([]);
 
