@@ -9,8 +9,19 @@ import Colors from '../util/colors';
 import { Button } from 'react-native-elements';
 import { ListItem } from '../components/screens/Checkout';
 import colors from '../util/colors';
+import * as SecureStore from 'expo-secure-store';
+
 
 export default function CheckoutScreen() {
+    const[cart,setCart]=  useState([])
+
+    
+    useEffect(async () => {
+        const store_cart = await SecureStore.getItemAsync('cart');
+        setCart(store_cart);
+    }, []);
+
+
     return (
         <View style={styles.container}>
             <View style={styles.summary}>
