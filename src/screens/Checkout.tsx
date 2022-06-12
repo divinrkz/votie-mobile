@@ -22,7 +22,7 @@ export default function CheckoutScreen() {
         setCart(store_cart);
     }, []);
 
-    const handleCheckout =()=>{
+    const handleCheckout =async()=>{
         
         const response = await fetch(
             'http://196.223.240.154:8099/supapp/api/orders',
@@ -39,6 +39,7 @@ export default function CheckoutScreen() {
 
         if (!response.ok)
             Alert.alert('Error', 'Sorry Try again');
+            
         const data = await response.json();
 
     }
