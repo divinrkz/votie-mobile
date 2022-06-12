@@ -20,10 +20,10 @@ export default function SearchScreen(props) {
                 round
                 iconColor={Colors.default}
                 onSubmitEditing={searchSubmit}
-                leftIconContainerStyle={{ color: Colors.default, fontSize: 100 }}
-                inputContainerStyle={{ backgroundColor: colors.white }}
-                containerStyle={{ backgroundColor: Colors.default, border: 0 }}
-                inputStyle={{ backgroundColor: colors.white }}
+                // leftIconContainerStyle={{ color: Colors.default, fontSize: 100 }}
+                // inputContainerStyle={{ backgroundColor: colors.white }}
+                // containerStyle={{ backgroundColor: Colors.default, border: 0 }}
+                // inputStyle={{ backgroundColor: colors.white }}
                 placeholder="Search for your preferred restaurant"
                 value={text}
             />
@@ -33,7 +33,7 @@ export default function SearchScreen(props) {
                     source={require('../../assets/qr-code.png')}
                     style={styles.img}
                 />
-                <Text style={styles.bottomText}>Scan , Pay & Enjoy!</Text>
+                <Text style={styles.bottomText}>Scan, Pay & Enjoy!</Text>
             </View>
         </View>
     );
@@ -41,8 +41,8 @@ export default function SearchScreen(props) {
 
 const styles = StyleSheet.create({
     bottomText: {
-        fontSize: 30,
-        fontWeight: 'bold',
+        fontSize: 20,
+        // fontWeight: 'bold',
         marginTop: 20,
     },
     container: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.default,
         height: '100%',
         paddingTop: 100,
-        width: '100%',
+        // width: '100%',
         // display: "flex",
     },
     desc: {
@@ -58,9 +58,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     img: {
-        height: 150,
+        height: 100,
         marginTop: 60,
-        width: 150,
+        width: 100,
     },
     input: {
         width: 300,
