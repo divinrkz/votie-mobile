@@ -61,12 +61,11 @@ function AppNavigator() {
         getToken();
     }, []);
 
-    console.log(isAuthenticated)
     if (!isAuthenticated) return <AuthNavigator />;
 
     return (
         <Tabs.Navigator
-            initialRouteName="Search"
+            initialRouteName="Scan"
             screenOptions={{
                 tabBarHideOnKeyboard: true,
                 headerShown: false,
