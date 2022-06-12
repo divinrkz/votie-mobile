@@ -18,10 +18,32 @@ export default function CheckoutScreen() {
     
     useEffect(async () => {
         const store_cart = await SecureStore.getItemAsync('cart');
+        console.log(store_cart);
         setCart(store_cart);
     }, []);
 
+    const handleCheckout =()=>{
+        
+        const response = await fetch(
+            'http://196.223.240.154:8099/supapp/api/orders',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "orderDetails": cart                
+                }),
+            }
+        );
 
+        if (!response.ok)
+            Alert.alert('Error', 'Sorry Try again');
+        const data = await response.json();
+
+    }
+
+    
     return (
         <View style={styles.container}>
             <View style={styles.summary}>
@@ -71,7 +93,7 @@ export default function CheckoutScreen() {
 
             <View style={styles.proceedView}>
                 <Text style={styles.assText}>
-          We will send you an order details to your email after the successfull
+          We will send you an order details to your email after the successfully
           payment
                 </Text>
 
@@ -84,6 +106,7 @@ export default function CheckoutScreen() {
                             size: 30,
                             color: colors.white,
                         }}
+                        onPress={()=>handleCheckout()}
                     >
                         <Text style={styles.payButtonText}>Pay for the order</Text>
                     </Button>
