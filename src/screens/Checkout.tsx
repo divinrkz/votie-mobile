@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     StyleSheet,
     Text,
@@ -16,13 +16,13 @@ export default function CheckoutScreen() {
     const[cart,setCart]=  useState([])
 
     
-    useEffect(async () => {
+    useEffect( async () => {
         const store_cart = await SecureStore.getItemAsync('cart');
         console.log(store_cart);
         setCart(store_cart);
     }, []);
 
-    const handleCheckout =()=>{
+    const handleCheckout =async ()=>{
         
         const response = await fetch(
             'http://196.223.240.154:8099/supapp/api/orders',

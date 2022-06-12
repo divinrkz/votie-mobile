@@ -51,6 +51,7 @@ export default function SignUp({ navigation }) {
             const data = await response.json();
 
             if (data.apierror) {
+                console.log(data)
                 Alert.alert('Error', data.apierror.message);
             } else {
                 Alert.alert('Success', 'You have successfully signed up!');

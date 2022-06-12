@@ -15,29 +15,7 @@ import ChooseRestaurant from '../screens/ChooseRestaurant';
 
 const Stack: any = createStackNavigator<RootStackParams>();
 
-const AuthStack = ({ navigation }) => {
-    return (
-        <Stack.Navigator
-            initialRouteName="SignUp"
-            screenOptions={{
-                headerStyle: { backgroundColor: '#42f44b' },
-                headerTintColor: colors.white,
-                headerTitleStyle: { fontWeight: 'bold' },
-            }}
-        >
-            <Stack.Screen
-                name="SignIn"
-                component={SignInScreen}
-                options={{ headerShown: false }}
-            />
-            <Stack.Screen
-                name="SignUp"
-                component={SignUpScreen}
-                options={{ headerShown: false }}
-            />
-        </Stack.Navigator>
-    );
-};
+
 const DashboardStack = ({ navigation }) => {
     return (
         <Stack.Navigator
@@ -168,7 +146,6 @@ const ShoppingCartStack = ({ navigation }) => {
 };
 
 export {
-    AuthStack,
     DashboardStack,
     NotificationStack,
     SearchStack,

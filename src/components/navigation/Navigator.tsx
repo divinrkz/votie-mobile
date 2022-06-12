@@ -24,21 +24,20 @@ function AuthNavigator() {
     const Stack: any = createStackNavigator();
     return (
         <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName="SignIn"
             screenOptions={{
                 gestureEnabled: true,
                 gestureDirection: 'horizontal',
                 cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             }}
         >
-            <Stack.Screen name="Splash" component={SplashScreen} />
             <Stack.Screen
-                name="Login"
+                name="SignIn"
                 component={Login}
                 options={{ headerShown: false }}
             />
             <Stack.Screen
-                name="Register"
+                name="SignUp"
                 component={SignUp}
                 options={{ headerShown: false }}
             />
@@ -51,6 +50,7 @@ const Tabs: any = createBottomTabNavigator();
 function AppNavigator() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+    console.log('here')
     useEffect(() => {
         async function getToken() {
             const token = await SecureStore.getItemAsync('token');
@@ -61,6 +61,7 @@ function AppNavigator() {
         getToken();
     }, []);
 
+    console.log(isAuthenticated)
     if (!isAuthenticated) return <AuthNavigator />;
 
     return (
