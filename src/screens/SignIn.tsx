@@ -61,7 +61,8 @@ export default function Login({ navigation }) {
                 try {
                     await SecureStore.setItemAsync('token', JSON.stringify(data.token));
                     await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
-                    navigation.navigate('Home');
+                    console.log('here')
+                    navigation.navigate('Search');
                 } catch (error) {
                     Alert.alert('Error', 'Something went wrong');
                 }
