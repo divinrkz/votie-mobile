@@ -6,8 +6,7 @@ export default function TextLogo({ size='lg', type='lander' }) {
     return (
         <View style={styles.container}>
             <View style={{ display: 'flex', flexDirection: 'row' }}>
-                <Text style={{ ...styles[`${size}`], ...styles.textBlack }}>Supa</Text>
-                <Text style={{ ...styles[`${size}`], ...(type === 'lander' ? styles.textWhite : styles.textYellow) }}>Menu</Text>
+                <Text style={{fontSize: 35}}>VOTIE</Text>
             </View>
         </View>
     );
@@ -16,7 +15,7 @@ export default function TextLogo({ size='lg', type='lander' }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#F7941D',
+        backgroundColor: '#1A56DB',
         // flex: 1,
         height: '100%',
         width: '100%',

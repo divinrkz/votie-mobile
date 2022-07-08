@@ -3,6 +3,7 @@ import React from 'react';
 import {
     Alert,
     SafeAreaView,
+    ScrollView,
     StyleSheet,
     Text,
     TextInput,
@@ -17,15 +18,17 @@ export default function SignUp({ navigation }) {
         initialValues: {
             email: '',
             password: '',
-            mobile: '',
-            fullName: '',
+            nationalId: '',
+            address: '',
+            phoneNumber: '',
+            names: '',
         },
         onSubmit: async (values, { resetForm }) => {
             if (
                 !values.email ||
-        !values.password ||
-        !values.mobile ||
-        !values.fullName
+        !values.password || !values.phoneNumber || 
+        !values.nationalId ||
+        !values.address || !values.names
             ) {
                 Alert.alert('Error', 'You must fill in all fields');
                 return;
@@ -41,9 +44,10 @@ export default function SignUp({ navigation }) {
                     body: JSON.stringify({
                         email: values.email,
                         password: values.password,
-                        mobile: values.mobile,
-                        firstName: values.fullName.split(' ')[0],
-                        lastName: values.fullName.split(' ')[1],
+                        nationalId: values.nationalId,
+                        phoneNumber: values.phoneNumber,
+                        address: values.address,
+                        names: values.names
                     }),
                 }
             );
@@ -63,14 +67,10 @@ export default function SignUp({ navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
+            <ScrollView>
             <View style={styles.form}>
-                <View style={styles.logo}>
-                    <Text style={styles.logoText}>Supa</Text>
-                    <Text style={styles.logoTextM}>Menu</Text>
-                </View>
-
                 <View style={styles.formText}>
-                    <Text style={styles.formTextWelcome}>Welcome...</Text>
+                    <Text style={styles.formTextWelcome}>Register to VOTIE</Text>
                     <Text style={styles.formTexFill}>Please fill in the information</Text>
                 </View>
 
@@ -78,33 +78,33 @@ export default function SignUp({ navigation }) {
                     <View>
                         <TextInput
                             style={styles.input}
-                            placeholder="Fullname"
+                            placeholder="Enter your Full Names"
                             autoCapitalize="none"
-                            value={values.fullName}
-                            onChangeText={handleChange('fullName')}
+                            value={values.names}
+                            onChangeText={handleChange('names')}
                         />
                         <Icon name="user" size={20} color="#9098b2" style={styles.icon} />
-                    </View>
-
-                    <View>
-                        <Icon name="phone" size={20} color="#9098b2" style={styles.icon} />
-                        <TextInput
-                            style={styles.input}
-                            placeholder="Phone number"
-                            autoCapitalize="none"
-                            value={values.mobile}
-                            onChangeText={handleChange('mobile')}
-                        />
                     </View>
 
                     <View>
                         <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
                         <TextInput
                             style={styles.input}
-                            placeholder="Your email"
+                            placeholder="Enter your email"
                             autoCapitalize="none"
                             value={values.email}
                             onChangeText={handleChange('email')}
+                        />
+                    </View>
+
+                    <View>
+                        <Icon name="phone" size={20} color="#9098b2" style={styles.icon} />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Enter your Phone Number"
+                            autoCapitalize="none"
+                            value={values.phoneNumber}
+                            onChangeText={handleChange('phoneNumber')}
                         />
                     </View>
 
@@ -113,7 +113,19 @@ export default function SignUp({ navigation }) {
                         <TextInput
                             style={styles.input}
                             secureTextEntry={true}
-                            placeholder="Your password"
+                            placeholder="Enter your National Id"
+                            autoCapitalize="none"
+                            value={values.nationalId}
+                            onChangeText={handleChange('nationalId')}
+                        />
+                    </View>
+
+                    <View>
+                        <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+                        <TextInput
+                            style={styles.input}
+                            secureTextEntry={true}
+                            placeholder="Enter your Password"
                             autoCapitalize="none"
                             value={values.password}
                             onChangeText={handleChange('password')}
@@ -126,7 +138,7 @@ export default function SignUp({ navigation }) {
                             handleSubmit();
                         }}
                     >
-                        <Text style={styles.buttonText}>proceed</Text>
+                        <Text style={styles.buttonText}>REGISTER</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -136,16 +148,17 @@ export default function SignUp({ navigation }) {
                     <View style={styles.horizontalLine} />
                 </View>
 
-                <Text style={styles.haveAnAccount}>If you have a PMG account</Text>
-
+                <Text style={styles.haveAnAccount}>If you have an account
                 <TouchableOpacity
-                    style={styles.button}
                     onPress={() => {
-                        navigation.navigate('Login');
+                        navigation.navigate('SignIn');
                     }}
                 >
-                    <Text style={styles.buttonText}>Sign in</Text>
+                    <Text style={{color: '#1A56DB'}}>Sign in</Text>
                 </TouchableOpacity>
+                </Text>
+
+
 
                 {/* <Text style={styles.dontHaveAccount}>
           Don&apos;t have an account?{' '}
@@ -159,6 +172,7 @@ export default function SignUp({ navigation }) {
                     </Text>
                 </Text> */}
             </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -182,7 +196,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     container: {
-        backgroundColor: '#F7941D',
+        backgroundColor: '#1A5d6DB',
         height: '100%',
         width: '100%',
     },

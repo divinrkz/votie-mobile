@@ -15,15 +15,17 @@ import Icon from 'react-native-vector-icons/Feather';
 import * as SecureStore from 'expo-secure-store';
 import { useEffect } from 'react';
 import colors from '../util/colors';
+import { API_URL, isLoggedIn, post, removeToken } from '../services';
+import { setToken } from '../services/index';
 
 
 export default function Login({ navigation }) {
 
     useEffect(() => {
         async function getToken() {
-            const token = await SecureStore.getItemAsync('token');
+            const token:any = await isLoggedIn()
             if (token) {
-                navigation.navigate('Search');
+                navigation.navigate('Candidates');
             }
         }
         getToken();
@@ -39,34 +41,26 @@ export default function Login({ navigation }) {
                 Alert.alert('Error', 'You must fill in all fields');
             }
 
-            const response = await fetch(
-                'http://196.223.240.154:8099/supapp/api/auth/signin',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        login: values.email,
-                        password: values.password,
-                    }),
-                }
-            );
+            
+            try {
+                 const response:any = await fetch(API_URL + '/auth/login', await post(values));
+        
+                 const obj = await response.json()
 
-            if (!response.ok)
-                Alert.alert('Error', 'Invalid email or password');
-            const data = await response.json();
-
-            if (data.token) {
-                try {
-                    await SecureStore.setItemAsync('token', JSON.stringify(data.token));
-                    await SecureStore.setItemAsync('refreshToken', JSON.stringify(data.token.refreshToken));
+                 if (obj.success) {
+                    setToken(obj.data.token)
                     console.log('here')
-                    navigation.navigate('Search');
-                } catch (error) {
-                    Alert.alert('Error', 'Something went wrong');
-                }
+                    navigation.navigate('Candidates')
+                 } else {
+                    Alert.alert('Error', obj.message);
+                    
+                 }
+                console.log(obj) 
             }
+            catch(err) {
+                console.log(err)
+            }
+
         },
     });
 
@@ -74,13 +68,9 @@ export default function Login({ navigation }) {
         <ScrollView>
             <SafeAreaView style={styles.container}>
                 <View style={styles.form}>
-                    <View style={styles.logo}>
-                        <Text style={styles.logoText}>Supa</Text>
-                        <Text style={styles.logoTextM}>Menu</Text>
-                    </View>
                     <View style={styles.formText}>
-                        <Text style={styles.formTextWelcome}>Welcome...</Text>
-                        <Text style={styles.formTextSignIn}>Sign in to continue</Text>
+                        <Text style={styles.formTextWelcome}>Welcome to VOTIE</Text>
+                        <Text style={styles.formTextSignIn}>LOGIN</Text>
                     </View>
 
                     <View style={styles.inputsArea}>
@@ -89,10 +79,10 @@ export default function Login({ navigation }) {
                                 style={styles.input}
                                 value={values.email}
                                 onChangeText={handleChange('email')}
-                                placeholder="You email"
+                                placeholder="Enter your email"
                                 autoCapitalize="none"
                             />
-                            <Icon name="mail" size={20} color="#9098b2" style={styles.icon} />
+                            <Icon name="mail" size={20} color="#1A56DB" style={styles.icon} />
                         </View>
                         <View style={styles.inputContainer}>
                             <TextInput
@@ -101,9 +91,9 @@ export default function Login({ navigation }) {
                                 secureTextEntry={true}
                                 autoCapitalize="none"
                                 onChangeText={handleChange('password')}
-                                placeholder="Password"
+                                placeholder="Enter your Password"
                             />
-                            <Icon name="lock" size={20} color="#9098b2" style={styles.icon} />
+                            <Icon name="lock" size={20} color="#1A56DB" style={styles.icon} />
                         </View>
                         <TouchableOpacity
                             style={styles.button}
@@ -111,37 +101,13 @@ export default function Login({ navigation }) {
                                 handleSubmit();
                             }}
                         >
-                            <Text style={styles.buttonText}>Sign in</Text>
+                            <Text style={styles.buttonText}>LOGIN</Text>
                         </TouchableOpacity>
                     </View>
 
-                    <View style={styles.horizontalContainer}>
-                        <View style={styles.horizontalLine} />
-                        <Text style={styles.or}>OR</Text>
-                        <View style={styles.horizontalLine} />
-                    </View>
-
-                    <View style={styles.authProvider}>
-                        <TouchableOpacity style={styles.authButton}>
-                            <Image
-                                source={require('../../assets/google.png')}
-                                style={styles.authImage}
-                            />
-
-                            <Text style={styles.authButtonText}>Sign in with Google</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={styles.authButton}>
-                            <Image
-                                source={require('../../assets/fb.png')}
-                                style={styles.authImage}
-                            />
-                            <Text style={styles.authButtonText}>Sign in with Facebook</Text>
-                        </TouchableOpacity>
-                    </View>
 
                     <View>
-                        <Text style={styles.forgotPassword}>Forgot password?</Text>
+                       
                         <Text style={styles.dontHaveAccount}>
                             Don&apos;t have an account?{' '}
                             <Text
@@ -171,7 +137,7 @@ const styles = StyleSheet.create({
         padding: '3%',
     },
     authButtonText: {
-        color: '#9098b2',
+        color: '#1A56DB',
         marginLeft: 50,
         textAlign: 'center',
     },
@@ -183,7 +149,7 @@ const styles = StyleSheet.create({
         marginVertical: '5%',
     },
     button: {
-        backgroundColor: '#F7941D',
+        backgroundColor: '#1A56DB',
         borderRadius: 5,
         elevation: 6,
         padding: '4%',
@@ -205,21 +171,16 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     dontHaveAccount: {
-        color: '#9098b2',
+        color: 'black',
         paddingVertical: '3%',
-        textAlign: 'center',
-    },
-    forgotPassword: {
-        color: '#F7941D',
-        fontWeight: 'bold',
         textAlign: 'center',
     },
     form: {
         backgroundColor: colors.white,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        height: '100%',
-        marginTop: '20%',
+        height: 600,
+        marginTop: '50%',
         padding: 20,
     },
     formText: {
@@ -229,12 +190,12 @@ const styles = StyleSheet.create({
         marginTop: '5%',
     },
     formTextSignIn: {
-        color: '#9098b2',
+        color: '#1A56DB',
         fontSize: 15,
         paddingBottom: '1%',
     },
     formTextSignUp: {
-        color: '#F7941D',
+        color: '#1A56DB',
         fontSize: 15,
         fontWeight: 'bold',
         paddingBottom: '1%',
@@ -251,7 +212,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     horizontalLine: {
-        borderBottomColor: '#9098b2',
+        borderBottomColor: '#1A56DB',
         borderBottomWidth: 1,
         flex: 1,
         height: 1,
@@ -259,10 +220,10 @@ const styles = StyleSheet.create({
     icon: {
         left: 12,
         position: 'absolute',
-        top: 18,
+        top: 22,
     },
     input: {
-        borderColor: '#9098b2',
+        borderColor: '#1A56DB',
         borderRadius: 5,
         borderWidth: 1,
         marginBottom: 20,
@@ -292,7 +253,7 @@ const styles = StyleSheet.create({
         marginLeft: 3,
     },
     or: {
-        color: '#9098b2',
+        color: '#1A56DB',
         textAlign: 'center',
         width: 50,
     },
